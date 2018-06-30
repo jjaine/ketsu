@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{9860AE83-BA8D-45F2-8269-B8ABC4AA01C0}" SchemaVersion="75">
+<WwiseDocument Type="WorkUnit" ID="{9860AE83-BA8D-45F2-8269-B8ABC4AA01C0}" SchemaVersion="85">
 	<AudioObjects>
 		<WorkUnit Name="Characters" ID="{9860AE83-BA8D-45F2-8269-B8ABC4AA01C0}" PersistMode="Standalone">
 			<ChildrenList>
@@ -57,6 +57,9 @@
 								<Reference Name="OutputBus">
 									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{68D58777-3A89-43FF-A94C-B9BE7BE915B7}"/>
 								</Reference>
+								<Reference Name="SwitchGroupOrStateGroup">
+									<ObjectRef Name="Tile_Material_Fox" ID="{6EBB486F-1177-41CF-8481-63F14ACAE39B}" WorkUnitID="{4B7CFCE5-0C64-40E8-9C5C-814256091DAC}"/>
+								</Reference>
 							</ReferenceList>
 							<ChildrenList>
 								<RandomSequenceContainer Name="Ground" ID="{D09C381C-13CE-4248-B20E-D689F1B11C3F}" ShortID="340483308">
@@ -94,7 +97,7 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<Sound Name="Move_Fox_Ground_01" ID="{BA2B9234-ABD4-4CBC-BA14-0C0E59F76D95}" ShortID="737034345" Type="SoundFX">
+										<Sound Name="Move_Fox_Ground_01" ID="{BA2B9234-ABD4-4CBC-BA14-0C0E59F76D95}" ShortID="737034345">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -116,7 +119,7 @@
 												<ActiveSource Name="Move_Fox_Ground_01" ID="{A474FBB5-A4A1-4DB8-ABEA-ED28AB914637}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Move_Fox_Ground_02" ID="{B9F19038-DABE-4EBD-9254-182BCC0E5A56}" ShortID="493379313" Type="SoundFX">
+										<Sound Name="Move_Fox_Ground_02" ID="{B9F19038-DABE-4EBD-9254-182BCC0E5A56}" ShortID="493379313">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -128,8 +131,8 @@
 											<ChildrenList>
 												<AudioFileSource Name="Move_Fox_Ground_02" ID="{ECE9FB41-ECB7-4D68-B9A0-8B234434E21B}" ShortID="780048494">
 													<PropertyList>
-														<Property Name="FadeInDuration" Type="Real64" Value="1.45574606396733E-02"/>
-														<Property Name="TrimBegin" Type="Real64" Value="3.11130041122429E-02"/>
+														<Property Name="FadeInDuration" Type="Real64" Value="0.0145574606396733"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.0311130041122429"/>
 													</PropertyList>
 													<Language>SFX</Language>
 													<AudioFile>Move_Fox_Ground_02.wav</AudioFile>
@@ -139,7 +142,7 @@
 												<ActiveSource Name="Move_Fox_Ground_02" ID="{ECE9FB41-ECB7-4D68-B9A0-8B234434E21B}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Move_Fox_Ground_03" ID="{DA2EAFA3-BD79-44A2-AC89-B7CF2259EF80}" ShortID="223709264" Type="SoundFX">
+										<Sound Name="Move_Fox_Ground_03" ID="{DA2EAFA3-BD79-44A2-AC89-B7CF2259EF80}" ShortID="223709264">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -151,7 +154,7 @@
 											<ChildrenList>
 												<AudioFileSource Name="Move_Fox_Ground_03" ID="{207DB537-0E46-4A6B-B005-A98FBCD3574F}" ShortID="899780812">
 													<PropertyList>
-														<Property Name="FadeInDuration" Type="Real64" Value="1.74429985137927E-02"/>
+														<Property Name="FadeInDuration" Type="Real64" Value="0.0174429985137927"/>
 														<Property Name="TrimBegin" Type="Real64" Value="0.051166128973792"/>
 													</PropertyList>
 													<Language>SFX</Language>
@@ -162,7 +165,7 @@
 												<ActiveSource Name="Move_Fox_Ground_03" ID="{207DB537-0E46-4A6B-B005-A98FBCD3574F}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Move_Fox_Ground_04" ID="{A6642F84-45CA-4479-9700-12E4686BD525}" ShortID="977731195" Type="SoundFX">
+										<Sound Name="Move_Fox_Ground_04" ID="{A6642F84-45CA-4479-9700-12E4686BD525}" ShortID="977731195">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -175,7 +178,7 @@
 												<AudioFileSource Name="Move_Fox_Ground_04" ID="{DC427B19-52ED-465A-8034-2C8E5FD0B6D7}" ShortID="633911034">
 													<PropertyList>
 														<Property Name="FadeInDuration" Type="Real64" Value="0.029324440255676"/>
-														<Property Name="TrimBegin" Type="Real64" Value="2.12745939109806E-02"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.0212745939109806"/>
 													</PropertyList>
 													<Language>SFX</Language>
 													<AudioFile>Move_Fox_Ground_04.wav</AudioFile>
@@ -215,7 +218,7 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<Sound Name="Move_Fox_Grass_01" ID="{11DFBCC5-2E80-4D16-8ADD-4468D1C68A36}" ShortID="663168826" Type="SoundFX">
+										<Sound Name="Move_Fox_Grass_01" ID="{11DFBCC5-2E80-4D16-8ADD-4468D1C68A36}" ShortID="663168826">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -227,9 +230,9 @@
 											<ChildrenList>
 												<AudioFileSource Name="Move_Fox_Grass_01" ID="{EA6C015A-A407-40C9-9D16-3CAD4877D302}" ShortID="310840679">
 													<PropertyList>
-														<Property Name="FadeInDuration" Type="Real64" Value="7.37557545220575E-03"/>
-														<Property Name="FadeOutDuration" Type="Real64" Value="4.22046817542884E-02"/>
-														<Property Name="TrimBegin" Type="Real64" Value="3.68778772610287E-03"/>
+														<Property Name="FadeInDuration" Type="Real64" Value="0.00737557545220575"/>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0422046817542884"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.00368778772610287"/>
 														<Property Name="TrimEnd" Type="Real64" Value="0.445812560666659"/>
 													</PropertyList>
 													<Language>SFX</Language>
@@ -240,7 +243,7 @@
 												<ActiveSource Name="Move_Fox_Grass_01" ID="{EA6C015A-A407-40C9-9D16-3CAD4877D302}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Move_Fox_Grass_02" ID="{0AB5BE77-F2BC-4A89-A12E-28B7AAAFD1A3}" ShortID="281139349" Type="SoundFX">
+										<Sound Name="Move_Fox_Grass_02" ID="{0AB5BE77-F2BC-4A89-A12E-28B7AAAFD1A3}" ShortID="281139349">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -252,8 +255,8 @@
 											<ChildrenList>
 												<AudioFileSource Name="Move_Fox_Grass_02" ID="{01F13CDC-4FCE-4742-8154-0480EA9FD56B}" ShortID="402022915">
 													<PropertyList>
-														<Property Name="FadeInDuration" Type="Real64" Value="4.14467563224224E-02"/>
-														<Property Name="FadeOutDuration" Type="Real64" Value="3.43415980957214E-02"/>
+														<Property Name="FadeInDuration" Type="Real64" Value="0.0414467563224224"/>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0343415980957214"/>
 														<Property Name="TrimBegin" Type="Real64" Value="0.017368164554158"/>
 														<Property Name="TrimEnd" Type="Real64" Value="0.438151423979894"/>
 													</PropertyList>
@@ -265,7 +268,7 @@
 												<ActiveSource Name="Move_Fox_Grass_02" ID="{01F13CDC-4FCE-4742-8154-0480EA9FD56B}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Move_Fox_Grass_03" ID="{D002EA49-5232-471C-BA67-DBFF95BA3342}" ShortID="931740478" Type="SoundFX">
+										<Sound Name="Move_Fox_Grass_03" ID="{D002EA49-5232-471C-BA67-DBFF95BA3342}" ShortID="931740478">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -277,8 +280,8 @@
 											<ChildrenList>
 												<AudioFileSource Name="Move_Fox_Grass_03" ID="{3174B1A5-35A7-49C9-8A8C-340721F425A4}" ShortID="555482349">
 													<PropertyList>
-														<Property Name="FadeInDuration" Type="Real64" Value="2.07446341473238E-02"/>
-														<Property Name="FadeOutDuration" Type="Real64" Value="2.34844914875364E-02"/>
+														<Property Name="FadeInDuration" Type="Real64" Value="0.0207446341473238"/>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0234844914875364"/>
 														<Property Name="TrimBegin" Type="Real64" Value="0.120553722969353"/>
 														<Property Name="TrimEnd" Type="Real64" Value="0.425852112307327"/>
 													</PropertyList>
@@ -290,7 +293,7 @@
 												<ActiveSource Name="Move_Fox_Grass_03" ID="{3174B1A5-35A7-49C9-8A8C-340721F425A4}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Move_Fox_Grass_04" ID="{92C1595E-C9FB-47E1-A6A0-ED2AF063EC31}" ShortID="156020246" Type="SoundFX">
+										<Sound Name="Move_Fox_Grass_04" ID="{92C1595E-C9FB-47E1-A6A0-ED2AF063EC31}" ShortID="156020246">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -302,9 +305,9 @@
 											<ChildrenList>
 												<AudioFileSource Name="Move_Fox_Grass_04" ID="{EB917396-AF02-433B-B5F1-40DD0420A0EE}" ShortID="40123842">
 													<PropertyList>
-														<Property Name="FadeInDuration" Type="Real64" Value="9.29383002460901E-03"/>
+														<Property Name="FadeInDuration" Type="Real64" Value="0.00929383002460901"/>
 														<Property Name="FadeOutDuration" Type="Real64" Value="0.022676945260046"/>
-														<Property Name="TrimBegin" Type="Real64" Value="6.95178485840755E-02"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.0695178485840755"/>
 														<Property Name="TrimEnd" Type="Real64" Value="0.413761312695593"/>
 													</PropertyList>
 													<Language>SFX</Language>
@@ -315,7 +318,7 @@
 												<ActiveSource Name="Move_Fox_Grass_04" ID="{EB917396-AF02-433B-B5F1-40DD0420A0EE}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Move_Fox_Grass_05" ID="{1698AD34-9DCC-4C27-93DF-1873748783CC}" ShortID="36475986" Type="SoundFX">
+										<Sound Name="Move_Fox_Grass_05" ID="{1698AD34-9DCC-4C27-93DF-1873748783CC}" ShortID="36475986">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -327,7 +330,7 @@
 											<ChildrenList>
 												<AudioFileSource Name="Move_Fox_Grass_05" ID="{23B6532F-12FD-4C33-9075-20AE3DA5839A}" ShortID="100508892">
 													<PropertyList>
-														<Property Name="FadeInDuration" Type="Real64" Value="2.89196199498153E-02"/>
+														<Property Name="FadeInDuration" Type="Real64" Value="0.0289196199498153"/>
 														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
 														<Property Name="TrimBegin" Type="Real64" Value="0.133330715353045"/>
 													</PropertyList>
@@ -369,7 +372,7 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<Sound Name="Move_Mud_01" ID="{3289629D-8DC6-46DF-86DC-1A90D56329EF}" ShortID="513563122" Type="SoundFX">
+										<Sound Name="Move_Mud_01" ID="{3289629D-8DC6-46DF-86DC-1A90D56329EF}" ShortID="513563122">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -388,7 +391,7 @@
 												<ActiveSource Name="Move_Mud_01" ID="{170C3514-4CE3-42BF-BC38-57E16FCB16ED}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Move_Mud_02" ID="{DA03B572-FB5D-4D6D-BB87-4E691FE2BA87}" ShortID="22971971" Type="SoundFX">
+										<Sound Name="Move_Mud_02" ID="{DA03B572-FB5D-4D6D-BB87-4E691FE2BA87}" ShortID="22971971">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -407,7 +410,7 @@
 												<ActiveSource Name="Move_Mud_02" ID="{3FA40731-57DE-4BAF-B289-400C028B4301}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Move_Mud_03" ID="{92E64F2B-B20A-46E4-B7FF-19D9FB591D3B}" ShortID="323854084" Type="SoundFX">
+										<Sound Name="Move_Mud_03" ID="{92E64F2B-B20A-46E4-B7FF-19D9FB591D3B}" ShortID="323854084">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -426,7 +429,7 @@
 												<ActiveSource Name="Move_Mud_03" ID="{97423146-B10B-41CB-800B-B88AA64A25BA}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Move_Mud_04" ID="{47EAC088-D792-4204-8595-7AE28CA3894E}" ShortID="127626681" Type="SoundFX">
+										<Sound Name="Move_Mud_04" ID="{47EAC088-D792-4204-8595-7AE28CA3894E}" ShortID="127626681">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -445,7 +448,7 @@
 												<ActiveSource Name="Move_Mud_04" ID="{FDA98ED8-CB82-4DD6-912A-6E36A2402380}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Move_Mud_05" ID="{95DA048B-768C-47CD-AADB-838BD22B0908}" ShortID="869988930" Type="SoundFX">
+										<Sound Name="Move_Mud_05" ID="{95DA048B-768C-47CD-AADB-838BD22B0908}" ShortID="869988930">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -464,7 +467,7 @@
 												<ActiveSource Name="Move_Mud_05" ID="{59738514-A171-4A7A-9CB1-B3CB37473880}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Move_Mud_06" ID="{8EAC479E-1B10-44C5-8606-C1F50CB5B9E9}" ShortID="824000584" Type="SoundFX">
+										<Sound Name="Move_Mud_06" ID="{8EAC479E-1B10-44C5-8606-C1F50CB5B9E9}" ShortID="824000584">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -483,7 +486,7 @@
 												<ActiveSource Name="Move_Mud_06" ID="{42CC01E3-035A-4332-BCCD-0EDA1487A4C9}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Move_Mud_07" ID="{E16C8F12-87E6-4E49-98DF-08565CF1E5BC}" ShortID="18368658" Type="SoundFX">
+										<Sound Name="Move_Mud_07" ID="{E16C8F12-87E6-4E49-98DF-08565CF1E5BC}" ShortID="18368658">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -502,7 +505,7 @@
 												<ActiveSource Name="Move_Mud_07" ID="{9BDE8B47-667E-46AD-95A7-209CC970C064}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Move_Mud_08" ID="{3CA0947D-9155-41B2-AAC8-647E879B359D}" ShortID="953037045" Type="SoundFX">
+										<Sound Name="Move_Mud_08" ID="{3CA0947D-9155-41B2-AAC8-647E879B359D}" ShortID="953037045">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -551,7 +554,7 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<Sound Name="Move_OnBridge_01" ID="{BB0E162D-3EAB-4945-BBF3-0E2A655D47B6}" ShortID="620067066" Type="SoundFX">
+										<Sound Name="Move_OnBridge_01" ID="{BB0E162D-3EAB-4945-BBF3-0E2A655D47B6}" ShortID="620067066">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -575,7 +578,7 @@
 												<ActiveSource Name="Move_OnBridge_01" ID="{5279C8B8-7AB9-40DC-A9D1-F456E7E3E08E}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Move_OnBridge_02" ID="{4A4A0D49-47A3-4880-BA95-3569BCFB99A5}" ShortID="215724730" Type="SoundFX">
+										<Sound Name="Move_OnBridge_02" ID="{4A4A0D49-47A3-4880-BA95-3569BCFB99A5}" ShortID="215724730">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -599,7 +602,7 @@
 												<ActiveSource Name="Move_OnBridge_02" ID="{676F05EB-DDE3-43FE-94CD-BCBC57EBFB4A}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Move_OnBridge_03" ID="{72D75FA3-AF44-42F1-ACA7-FF5A0E951CAA}" ShortID="105824189" Type="SoundFX">
+										<Sound Name="Move_OnBridge_03" ID="{72D75FA3-AF44-42F1-ACA7-FF5A0E951CAA}" ShortID="105824189">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -623,7 +626,7 @@
 												<ActiveSource Name="Move_OnBridge_03" ID="{C0E3BF1B-4289-4563-A0F2-4A41473CE03B}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Move_OnBridge_04" ID="{E8AD5EE7-A927-44CA-9C2B-132E9A5CEA63}" ShortID="499356898" Type="SoundFX">
+										<Sound Name="Move_OnBridge_04" ID="{E8AD5EE7-A927-44CA-9C2B-132E9A5CEA63}" ShortID="499356898">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -648,7 +651,7 @@
 												<ActiveSource Name="Move_OnBridge_04" ID="{DFA733FC-FE33-4E4A-91C6-52DBFDCB4305}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Move_OnBridge_05" ID="{D75F0A2B-E370-4567-BC3F-6EC33CF203EF}" ShortID="445004290" Type="SoundFX">
+										<Sound Name="Move_OnBridge_05" ID="{D75F0A2B-E370-4567-BC3F-6EC33CF203EF}" ShortID="445004290">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -702,7 +705,7 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<Sound Name="Move_Fox_Ice_01" ID="{91DC1AF5-A207-4D67-A3B1-6BFC3CA52B73}" ShortID="1032491587" Type="SoundFX">
+										<Sound Name="Move_Fox_Ice_01" ID="{91DC1AF5-A207-4D67-A3B1-6BFC3CA52B73}" ShortID="1032491587">
 											<PropertyList>
 												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 											</PropertyList>
@@ -727,7 +730,7 @@
 												<ActiveSource Name="Move_Fox_Ice_01" ID="{06866928-5A3E-494F-BA47-474FF170A662}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Move_Fox_Ice_02" ID="{1E34523C-7B96-4D3A-A725-0034BFDF9104}" ShortID="30695490" Type="SoundFX">
+										<Sound Name="Move_Fox_Ice_02" ID="{1E34523C-7B96-4D3A-A725-0034BFDF9104}" ShortID="30695490">
 											<PropertyList>
 												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 											</PropertyList>
@@ -752,7 +755,7 @@
 												<ActiveSource Name="Move_Fox_Ice_02" ID="{50B9495F-265F-4375-8A15-1C7E27225855}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Move_Fox_Ice_03" ID="{54FBCBB5-8DF1-45A9-A57F-561F964BA279}" ShortID="460287585" Type="SoundFX">
+										<Sound Name="Move_Fox_Ice_03" ID="{54FBCBB5-8DF1-45A9-A57F-561F964BA279}" ShortID="460287585">
 											<PropertyList>
 												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 											</PropertyList>
@@ -781,8 +784,6 @@
 								</RandomSequenceContainer>
 							</ChildrenList>
 							<GroupingInfo>
-								<GroupRef Name="Tile_Material_Fox" ID="{6EBB486F-1177-41CF-8481-63F14ACAE39B}"/>
-								<DefaultSwitchRef Name="" ID="{00000000-0000-0000-0000-000000000000}"/>
 								<GroupingBehaviorList>
 									<GroupingBehavior>
 										<ItemRef Name="Ground" ID="{D09C381C-13CE-4248-B20E-D689F1B11C3F}"/>
@@ -859,7 +860,7 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<Sound Name="Move_Ketsu" ID="{D1D68078-D334-4329-A819-6676C0B984D7}" ShortID="1044676079" Type="SoundFX">
+								<Sound Name="Move_Ketsu" ID="{D1D68078-D334-4329-A819-6676C0B984D7}" ShortID="1044676079">
 									<PropertyList>
 										<Property Name="Pitch" Type="int32">
 											<ValueList>
@@ -878,7 +879,7 @@
 									<ChildrenList>
 										<AudioFileSource Name="Move_Ketsu" ID="{027B1A0B-9BB8-4EE1-9915-EBA2DE18900A}" ShortID="1070593893">
 											<PropertyList>
-												<Property Name="FadeOutDuration" Type="Real64" Value="2.34827560686797E-02"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.0234827560686797"/>
 												<Property Name="TrimEnd" Type="Real64" Value="0.190439424215512"/>
 											</PropertyList>
 											<Language>SFX</Language>
@@ -889,7 +890,7 @@
 										<ActiveSource Name="Move_Ketsu" ID="{027B1A0B-9BB8-4EE1-9915-EBA2DE18900A}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="Move_Ketsu_01" ID="{C918DC57-7582-4569-AA8E-39E0418D9A84}" ShortID="284893256" Type="SoundFX">
+								<Sound Name="Move_Ketsu_01" ID="{C918DC57-7582-4569-AA8E-39E0418D9A84}" ShortID="284893256">
 									<PropertyList>
 										<Property Name="Pitch" Type="int32">
 											<ValueList>
@@ -908,7 +909,7 @@
 									<ChildrenList>
 										<AudioFileSource Name="Move_Ketsu" ID="{839D6618-D22C-4AE8-8793-3D106D8BC58D}" ShortID="843925380">
 											<PropertyList>
-												<Property Name="FadeOutDuration" Type="Real64" Value="2.34827560686797E-02"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.0234827560686797"/>
 												<Property Name="TrimEnd" Type="Real64" Value="0.190439424215512"/>
 											</PropertyList>
 											<Language>SFX</Language>
@@ -922,7 +923,7 @@
 										<ActiveSource Name="Move_Ketsu" ID="{839D6618-D22C-4AE8-8793-3D106D8BC58D}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="Move_Ketsu_02" ID="{F99E07E1-845C-4D3C-9686-D748A6F43D7A}" ShortID="545120651" Type="SoundFX">
+								<Sound Name="Move_Ketsu_02" ID="{F99E07E1-845C-4D3C-9686-D748A6F43D7A}" ShortID="545120651">
 									<PropertyList>
 										<Property Name="Pitch" Type="int32">
 											<ValueList>
@@ -941,7 +942,7 @@
 									<ChildrenList>
 										<AudioFileSource Name="Move_Ketsu" ID="{2E3F500E-C117-41CB-8AE4-ABAAC70BD9B4}" ShortID="923554590">
 											<PropertyList>
-												<Property Name="FadeOutDuration" Type="Real64" Value="2.34827560686797E-02"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.0234827560686797"/>
 												<Property Name="TrimEnd" Type="Real64" Value="0.190439424215512"/>
 											</PropertyList>
 											<Language>SFX</Language>
@@ -955,7 +956,7 @@
 										<ActiveSource Name="Move_Ketsu" ID="{2E3F500E-C117-41CB-8AE4-ABAAC70BD9B4}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="Move_Ketsu_03" ID="{9FF709C0-7029-4402-A79C-0589A18DD5D8}" ShortID="509568628" Type="SoundFX">
+								<Sound Name="Move_Ketsu_03" ID="{9FF709C0-7029-4402-A79C-0589A18DD5D8}" ShortID="509568628">
 									<PropertyList>
 										<Property Name="Highpass" Type="int16">
 											<ValueList>
@@ -979,7 +980,7 @@
 									<ChildrenList>
 										<AudioFileSource Name="Move_Ketsu" ID="{38F82C49-EE07-40DB-B1FA-C4BE4AF078E2}" ShortID="257792203">
 											<PropertyList>
-												<Property Name="FadeOutDuration" Type="Real64" Value="2.34827560686797E-02"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.0234827560686797"/>
 												<Property Name="TrimEnd" Type="Real64" Value="0.190439424215512"/>
 											</PropertyList>
 											<Language>SFX</Language>
@@ -993,7 +994,7 @@
 										<ActiveSource Name="Move_Ketsu" ID="{38F82C49-EE07-40DB-B1FA-C4BE4AF078E2}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="Move_Ketsu_04" ID="{C9C0EE09-F376-483B-A550-33942D43CCA2}" ShortID="746217176" Type="SoundFX">
+								<Sound Name="Move_Ketsu_04" ID="{C9C0EE09-F376-483B-A550-33942D43CCA2}" ShortID="746217176">
 									<PropertyList>
 										<Property Name="Highpass" Type="int16">
 											<ValueList>
@@ -1017,7 +1018,7 @@
 									<ChildrenList>
 										<AudioFileSource Name="Move_Ketsu" ID="{721252DB-D73C-4D05-8AB8-C94E4D43754E}" ShortID="540363731">
 											<PropertyList>
-												<Property Name="FadeOutDuration" Type="Real64" Value="2.34827560686797E-02"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.0234827560686797"/>
 												<Property Name="TrimEnd" Type="Real64" Value="0.190439424215512"/>
 											</PropertyList>
 											<Language>SFX</Language>
@@ -1031,7 +1032,7 @@
 										<ActiveSource Name="Move_Ketsu" ID="{721252DB-D73C-4D05-8AB8-C94E4D43754E}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="Move_Ketsu_05" ID="{3BFBB6D4-F781-44AE-AB2A-073B0AE8935F}" ShortID="934168250" Type="SoundFX">
+								<Sound Name="Move_Ketsu_05" ID="{3BFBB6D4-F781-44AE-AB2A-073B0AE8935F}" ShortID="934168250">
 									<PropertyList>
 										<Property Name="Highpass" Type="int16">
 											<ValueList>
@@ -1055,7 +1056,7 @@
 									<ChildrenList>
 										<AudioFileSource Name="Move_Ketsu" ID="{A0AA4E40-3B6F-45B4-BCE9-90685B275DE4}" ShortID="333970046">
 											<PropertyList>
-												<Property Name="FadeOutDuration" Type="Real64" Value="2.34827560686797E-02"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.0234827560686797"/>
 												<Property Name="TrimEnd" Type="Real64" Value="0.190439424215512"/>
 											</PropertyList>
 											<Language>SFX</Language>
@@ -1069,7 +1070,7 @@
 										<ActiveSource Name="Move_Ketsu" ID="{A0AA4E40-3B6F-45B4-BCE9-90685B275DE4}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="Move_Ketsu_06" ID="{3DE6BB25-724D-4B79-8749-F902D62B675F}" ShortID="31098432" Type="SoundFX">
+								<Sound Name="Move_Ketsu_06" ID="{3DE6BB25-724D-4B79-8749-F902D62B675F}" ShortID="31098432">
 									<PropertyList>
 										<Property Name="Highpass" Type="int16">
 											<ValueList>
@@ -1093,7 +1094,7 @@
 									<ChildrenList>
 										<AudioFileSource Name="Move_Ketsu" ID="{F1443717-7BCC-4136-928D-8F94B60BA42F}" ShortID="530109681">
 											<PropertyList>
-												<Property Name="FadeOutDuration" Type="Real64" Value="2.34827560686797E-02"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.0234827560686797"/>
 												<Property Name="TrimEnd" Type="Real64" Value="0.190439424215512"/>
 											</PropertyList>
 											<Language>SFX</Language>
@@ -1146,7 +1147,7 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<Sound Name="Move_Fox_Ice_01" ID="{80ACFE08-2FB4-4DFF-9C52-17F4D89B4010}" ShortID="996146452" Type="SoundFX">
+								<Sound Name="Move_Fox_Ice_01" ID="{80ACFE08-2FB4-4DFF-9C52-17F4D89B4010}" ShortID="996146452">
 									<PropertyList>
 										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 									</PropertyList>
@@ -1168,7 +1169,7 @@
 										<ActiveSource Name="Move_Fox_Ice_01" ID="{32D15A35-590B-4E0B-9E2D-366AEF63A80A}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="Move_Fox_Ice_02" ID="{A197C6F6-F22A-44E6-B140-8353C2943234}" ShortID="1046525035" Type="SoundFX">
+								<Sound Name="Move_Fox_Ice_02" ID="{A197C6F6-F22A-44E6-B140-8353C2943234}" ShortID="1046525035">
 									<PropertyList>
 										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 									</PropertyList>
@@ -1190,7 +1191,7 @@
 										<ActiveSource Name="Move_Fox_Ice_02" ID="{69039925-EA63-4283-9432-B094F667349F}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="Move_Fox_Ice_03" ID="{5857BB43-6A9E-48A9-B752-7F298CBA75D9}" ShortID="985538422" Type="SoundFX">
+								<Sound Name="Move_Fox_Ice_03" ID="{5857BB43-6A9E-48A9-B752-7F298CBA75D9}" ShortID="985538422">
 									<PropertyList>
 										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 									</PropertyList>
@@ -1270,6 +1271,9 @@
 								<Reference Name="OutputBus">
 									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{68D58777-3A89-43FF-A94C-B9BE7BE915B7}"/>
 								</Reference>
+								<Reference Name="SwitchGroupOrStateGroup">
+									<ObjectRef Name="Tile_Material_Wolf" ID="{6A67E4EA-A22F-4FF0-853C-797D1B519132}" WorkUnitID="{4B7CFCE5-0C64-40E8-9C5C-814256091DAC}"/>
+								</Reference>
 							</ReferenceList>
 							<ChildrenList>
 								<RandomSequenceContainer Name="Grass" ID="{E97EB4CE-AB52-44DA-8310-86160BCEA6B6}" ShortID="20620779">
@@ -1300,7 +1304,7 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<Sound Name="Move_Wolf_Grass_01" ID="{64F98A4A-73E0-4A34-BDAB-EA5904380D20}" ShortID="117506525" Type="SoundFX">
+										<Sound Name="Move_Wolf_Grass_01" ID="{64F98A4A-73E0-4A34-BDAB-EA5904380D20}" ShortID="117506525">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -1319,7 +1323,7 @@
 												<ActiveSource Name="Move_Wolf_Grass_01" ID="{8D24EB92-25EE-47BB-84B7-835F6F64B444}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Move_Wolf_Grass_02" ID="{797CD7EB-CC8C-48C7-93EA-B9666C27CA4A}" ShortID="349403825" Type="SoundFX">
+										<Sound Name="Move_Wolf_Grass_02" ID="{797CD7EB-CC8C-48C7-93EA-B9666C27CA4A}" ShortID="349403825">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -1338,7 +1342,7 @@
 												<ActiveSource Name="Move_Wolf_Grass_02" ID="{C4032811-85A4-4413-A71B-218BDF04710F}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Move_Wolf_Grass_03" ID="{C0227164-6EF0-4F81-B2EE-8CBE08177D2E}" ShortID="786842070" Type="SoundFX">
+										<Sound Name="Move_Wolf_Grass_03" ID="{C0227164-6EF0-4F81-B2EE-8CBE08177D2E}" ShortID="786842070">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -1350,8 +1354,8 @@
 											<ChildrenList>
 												<AudioFileSource Name="Move_Wolf_Grass_03" ID="{62B206B9-C825-4375-8200-4327B65F6EFC}" ShortID="891115824">
 													<PropertyList>
-														<Property Name="FadeInDuration" Type="Real64" Value="4.53219511605708E-02"/>
-														<Property Name="TrimBegin" Type="Real64" Value="3.26912434600838E-02"/>
+														<Property Name="FadeInDuration" Type="Real64" Value="0.0453219511605708"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.0326912434600838"/>
 													</PropertyList>
 													<Language>SFX</Language>
 													<AudioFile>Move_Wolf_Grass_03.wav</AudioFile>
@@ -1361,7 +1365,7 @@
 												<ActiveSource Name="Move_Wolf_Grass_03" ID="{62B206B9-C825-4375-8200-4327B65F6EFC}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Move_Wolf_Grass_04" ID="{5A962083-ADEE-4BF6-AF5D-F63813658A93}" ShortID="547398961" Type="SoundFX">
+										<Sound Name="Move_Wolf_Grass_04" ID="{5A962083-ADEE-4BF6-AF5D-F63813658A93}" ShortID="547398961">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -1380,7 +1384,7 @@
 												<ActiveSource Name="Move_Wolf_Grass_04" ID="{0E658A55-18C2-4B6E-8E3E-1876A0ECD9E8}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Move_Wolf_Grass_05" ID="{1737DAEB-EFA6-40FA-9DEC-FC988BFFB558}" ShortID="796070503" Type="SoundFX">
+										<Sound Name="Move_Wolf_Grass_05" ID="{1737DAEB-EFA6-40FA-9DEC-FC988BFFB558}" ShortID="796070503">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -1392,8 +1396,8 @@
 											<ChildrenList>
 												<AudioFileSource Name="Move_Wolf_Grass_05" ID="{F5309332-CC1C-45A6-A035-C883FA6CB1F0}" ShortID="99673032">
 													<PropertyList>
-														<Property Name="FadeInDuration" Type="Real64" Value="1.99671342782228E-02"/>
-														<Property Name="TrimBegin" Type="Real64" Value="4.03336112420101E-02"/>
+														<Property Name="FadeInDuration" Type="Real64" Value="0.0199671342782228"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.0403336112420101"/>
 													</PropertyList>
 													<Language>SFX</Language>
 													<AudioFile>Move_Wolf_Grass_05.wav</AudioFile>
@@ -1428,7 +1432,7 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<Sound Name="Move_Wolf_Ground_01" ID="{C6AD6735-F62B-4109-9B3B-8237DF84B070}" ShortID="810916345" Type="SoundFX">
+										<Sound Name="Move_Wolf_Ground_01" ID="{C6AD6735-F62B-4109-9B3B-8237DF84B070}" ShortID="810916345">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -1440,9 +1444,9 @@
 											<ChildrenList>
 												<AudioFileSource Name="Move_Wolf_Ground_01" ID="{0BD7FAC7-47BA-481D-8AD9-5B0C7BA55EC5}" ShortID="943145784">
 													<PropertyList>
-														<Property Name="FadeInDuration" Type="Real64" Value="8.15400168356271E-03"/>
-														<Property Name="FadeOutDuration" Type="Real64" Value="4.59885694952937E-02"/>
-														<Property Name="TrimBegin" Type="Real64" Value="3.00067261955108E-02"/>
+														<Property Name="FadeInDuration" Type="Real64" Value="0.00815400168356271"/>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0459885694952937"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.0300067261955108"/>
 														<Property Name="TrimEnd" Type="Real64" Value="0.327464707611878"/>
 													</PropertyList>
 													<Language>SFX</Language>
@@ -1453,7 +1457,7 @@
 												<ActiveSource Name="Move_Wolf_Ground_01" ID="{0BD7FAC7-47BA-481D-8AD9-5B0C7BA55EC5}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Move_Wolf_Ground_02" ID="{E4114B1D-E88F-4608-BED7-1CF5F8A82FC5}" ShortID="956415169" Type="SoundFX">
+										<Sound Name="Move_Wolf_Ground_02" ID="{E4114B1D-E88F-4608-BED7-1CF5F8A82FC5}" ShortID="956415169">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -1465,9 +1469,9 @@
 											<ChildrenList>
 												<AudioFileSource Name="Move_Wolf_Ground_02" ID="{92314B1C-9BAB-480D-93A5-FA19891388F6}" ShortID="814823044">
 													<PropertyList>
-														<Property Name="FadeInDuration" Type="Real64" Value="8.80632181824773E-03"/>
+														<Property Name="FadeInDuration" Type="Real64" Value="0.00880632181824773"/>
 														<Property Name="FadeOutDuration" Type="Real64" Value="0.077626096027517"/>
-														<Property Name="TrimBegin" Type="Real64" Value="1.17417624243303E-02"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.0117417624243303"/>
 														<Property Name="TrimEnd" Type="Real64" Value="0.254078692459814"/>
 													</PropertyList>
 													<Language>SFX</Language>
@@ -1478,7 +1482,7 @@
 												<ActiveSource Name="Move_Wolf_Ground_02" ID="{92314B1C-9BAB-480D-93A5-FA19891388F6}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Move_Wolf_Ground_03" ID="{2E8AC2D2-ED4D-4817-866A-7A11BA3379C8}" ShortID="281354011" Type="SoundFX">
+										<Sound Name="Move_Wolf_Ground_03" ID="{2E8AC2D2-ED4D-4817-866A-7A11BA3379C8}" ShortID="281354011">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -1490,9 +1494,9 @@
 											<ChildrenList>
 												<AudioFileSource Name="Move_Wolf_Ground_03" ID="{6E03DC72-344F-406C-B6EC-F71A0784B5C7}" ShortID="868623114">
 													<PropertyList>
-														<Property Name="FadeInDuration" Type="Real64" Value="7.50168154887769E-03"/>
-														<Property Name="FadeOutDuration" Type="Real64" Value="2.02219241752356E-02"/>
-														<Property Name="TrimBegin" Type="Real64" Value="9.13248188559023E-03"/>
+														<Property Name="FadeInDuration" Type="Real64" Value="0.00750168154887769"/>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0202219241752356"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.00913248188559023"/>
 														<Property Name="TrimEnd" Type="Real64" Value="0.302024222359163"/>
 													</PropertyList>
 													<Language>SFX</Language>
@@ -1503,7 +1507,7 @@
 												<ActiveSource Name="Move_Wolf_Ground_03" ID="{6E03DC72-344F-406C-B6EC-F71A0784B5C7}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Move_Wolf_Ground_04" ID="{551BA767-7EA0-4ECA-A65A-6FA943F36863}" ShortID="628435375" Type="SoundFX">
+										<Sound Name="Move_Wolf_Ground_04" ID="{551BA767-7EA0-4ECA-A65A-6FA943F36863}" ShortID="628435375">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -1515,7 +1519,7 @@
 											<ChildrenList>
 												<AudioFileSource Name="Move_Wolf_Ground_04" ID="{C87E4C4B-3383-4029-97EA-0719B91EC2F5}" ShortID="935211600">
 													<PropertyList>
-														<Property Name="FadeInDuration" Type="Real64" Value="5.87088121216515E-03"/>
+														<Property Name="FadeInDuration" Type="Real64" Value="0.00587088121216515"/>
 														<Property Name="FadeOutDuration" Type="Real64" Value="0.039791528215786"/>
 														<Property Name="TrimEnd" Type="Real64" Value="0.272669816298337"/>
 													</PropertyList>
@@ -1552,7 +1556,7 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<Sound Name="Move_Wolf_Ice_01" ID="{5C4B4602-3059-4EFB-8CBB-4485A5E640A8}" ShortID="891958316" Type="SoundFX">
+										<Sound Name="Move_Wolf_Ice_01" ID="{5C4B4602-3059-4EFB-8CBB-4485A5E640A8}" ShortID="891958316">
 											<PropertyList>
 												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 											</PropertyList>
@@ -1574,7 +1578,7 @@
 												<ActiveSource Name="Move_Wolf_Ice_01" ID="{E41B64DD-0E3B-422F-A44D-4DEA980A3A99}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Move_Wolf_Ice_02" ID="{EDF053F8-946D-41FD-A902-E3D3C69C06E5}" ShortID="125566102" Type="SoundFX">
+										<Sound Name="Move_Wolf_Ice_02" ID="{EDF053F8-946D-41FD-A902-E3D3C69C06E5}" ShortID="125566102">
 											<PropertyList>
 												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 											</PropertyList>
@@ -1596,7 +1600,7 @@
 												<ActiveSource Name="Move_Wolf_Ice_02" ID="{BCAAA730-8273-46E9-A9E5-AE65A537A6BA}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Move_Wolf_Ice_03" ID="{1F8B6E23-E1D3-4588-83E1-ACAB115AC907}" ShortID="252163545" Type="SoundFX">
+										<Sound Name="Move_Wolf_Ice_03" ID="{1F8B6E23-E1D3-4588-83E1-ACAB115AC907}" ShortID="252163545">
 											<PropertyList>
 												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 											</PropertyList>
@@ -1643,7 +1647,7 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<Sound Name="Move_Mud_01" ID="{FB92CA46-4B9A-4185-A023-BF3032010BAF}" ShortID="906400008" Type="SoundFX">
+										<Sound Name="Move_Mud_01" ID="{FB92CA46-4B9A-4185-A023-BF3032010BAF}" ShortID="906400008">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -1665,7 +1669,7 @@
 												<ActiveSource Name="Move_Mud_01" ID="{150A6D8F-DD34-4083-919E-C35F3BD6BB93}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Move_Mud_02" ID="{C67EAF44-6CD1-4C47-9155-F7FE240CBDF5}" ShortID="717553767" Type="SoundFX">
+										<Sound Name="Move_Mud_02" ID="{C67EAF44-6CD1-4C47-9155-F7FE240CBDF5}" ShortID="717553767">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -1687,7 +1691,7 @@
 												<ActiveSource Name="Move_Mud_02" ID="{A73CCC8A-174D-41E6-BD5B-A76EA54155C3}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Move_Mud_03" ID="{D1927E69-1477-43DB-A821-9865870D215C}" ShortID="693787419" Type="SoundFX">
+										<Sound Name="Move_Mud_03" ID="{D1927E69-1477-43DB-A821-9865870D215C}" ShortID="693787419">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -1709,7 +1713,7 @@
 												<ActiveSource Name="Move_Mud_03" ID="{A49C8146-3B8B-4F33-B6EC-BC75B44B1144}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Move_Mud_04" ID="{C9EB8B32-3362-4B99-9570-090E06C58EEF}" ShortID="920520281" Type="SoundFX">
+										<Sound Name="Move_Mud_04" ID="{C9EB8B32-3362-4B99-9570-090E06C58EEF}" ShortID="920520281">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -1731,7 +1735,7 @@
 												<ActiveSource Name="Move_Mud_04" ID="{262EEBDA-F007-48D8-81BC-AFA4500C9F11}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Move_Mud_05" ID="{B399D085-882D-4D67-8EB8-D9357B0E48CC}" ShortID="801607306" Type="SoundFX">
+										<Sound Name="Move_Mud_05" ID="{B399D085-882D-4D67-8EB8-D9357B0E48CC}" ShortID="801607306">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -1753,7 +1757,7 @@
 												<ActiveSource Name="Move_Mud_05" ID="{CA822FBA-A27C-4199-BE91-0FCCCBDB1201}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Move_Mud_06" ID="{7B4876C7-659D-49EF-B8D3-420B00DC8AFC}" ShortID="719554895" Type="SoundFX">
+										<Sound Name="Move_Mud_06" ID="{7B4876C7-659D-49EF-B8D3-420B00DC8AFC}" ShortID="719554895">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -1775,7 +1779,7 @@
 												<ActiveSource Name="Move_Mud_06" ID="{72539FDD-E44D-438F-8DFD-E749296C28DE}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Move_Mud_07" ID="{56B50B32-6ED6-4231-A79E-3CD6A090797D}" ShortID="812177009" Type="SoundFX">
+										<Sound Name="Move_Mud_07" ID="{56B50B32-6ED6-4231-A79E-3CD6A090797D}" ShortID="812177009">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -1797,7 +1801,7 @@
 												<ActiveSource Name="Move_Mud_07" ID="{63895A45-1247-47B7-9997-B1A4C57B3946}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Move_Mud_08" ID="{53FB34EE-A1C7-46D6-93C4-F58D8F1EE0DA}" ShortID="579346847" Type="SoundFX">
+										<Sound Name="Move_Mud_08" ID="{53FB34EE-A1C7-46D6-93C4-F58D8F1EE0DA}" ShortID="579346847">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -1854,7 +1858,7 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<Sound Name="Move_OnBridge_01" ID="{E937AB18-AE4C-4DFF-88CA-F68D8C1E205B}" ShortID="90806410" Type="SoundFX">
+										<Sound Name="Move_OnBridge_01" ID="{E937AB18-AE4C-4DFF-88CA-F68D8C1E205B}" ShortID="90806410">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -1879,7 +1883,7 @@
 												<ActiveSource Name="Move_OnBridge_01" ID="{D205222D-06A1-4A76-B7C5-C747516156B8}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Move_OnBridge_02" ID="{E3194E0E-7CDE-41FF-A9F2-6A043E23F6CB}" ShortID="180729084" Type="SoundFX">
+										<Sound Name="Move_OnBridge_02" ID="{E3194E0E-7CDE-41FF-A9F2-6A043E23F6CB}" ShortID="180729084">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -1904,7 +1908,7 @@
 												<ActiveSource Name="Move_OnBridge_02" ID="{B1C48424-7E74-49AB-B332-D8F90E6D34E5}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Move_OnBridge_03" ID="{A5E7DCC0-2102-4FE9-B477-8140DA16ACEB}" ShortID="224625491" Type="SoundFX">
+										<Sound Name="Move_OnBridge_03" ID="{A5E7DCC0-2102-4FE9-B477-8140DA16ACEB}" ShortID="224625491">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -1929,7 +1933,7 @@
 												<ActiveSource Name="Move_OnBridge_03" ID="{7D21EF9F-5009-4FF6-958D-0E68243010FE}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Move_OnBridge_04" ID="{AD2C2113-6EDC-4C76-A2E8-6872BF0C08F6}" ShortID="948517768" Type="SoundFX">
+										<Sound Name="Move_OnBridge_04" ID="{AD2C2113-6EDC-4C76-A2E8-6872BF0C08F6}" ShortID="948517768">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -1953,7 +1957,7 @@
 												<ActiveSource Name="Move_OnBridge_04" ID="{E9AFF918-AE73-4B0D-8B19-6AC83CAEB795}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Move_OnBridge_05" ID="{9B86338D-1791-4513-860F-0A62D09AD849}" ShortID="605926278" Type="SoundFX">
+										<Sound Name="Move_OnBridge_05" ID="{9B86338D-1791-4513-860F-0A62D09AD849}" ShortID="605926278">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -1982,8 +1986,6 @@
 								</RandomSequenceContainer>
 							</ChildrenList>
 							<GroupingInfo>
-								<GroupRef Name="Tile_Material_Wolf" ID="{6A67E4EA-A22F-4FF0-853C-797D1B519132}"/>
-								<DefaultSwitchRef Name="" ID="{00000000-0000-0000-0000-000000000000}"/>
 								<GroupingBehaviorList>
 									<GroupingBehavior>
 										<ItemRef Name="Ice" ID="{C5D3A72F-3F70-494B-8757-43BC5444CE25}"/>

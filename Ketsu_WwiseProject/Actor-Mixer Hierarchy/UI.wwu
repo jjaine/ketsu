@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{31E82EE3-46D8-44FD-B484-8AC77E38A15B}" SchemaVersion="75">
+<WwiseDocument Type="WorkUnit" ID="{31E82EE3-46D8-44FD-B484-8AC77E38A15B}" SchemaVersion="85">
 	<AudioObjects>
 		<WorkUnit Name="UI" ID="{31E82EE3-46D8-44FD-B484-8AC77E38A15B}" PersistMode="Standalone">
 			<ChildrenList>
@@ -32,7 +32,7 @@
 					<ChildrenList>
 						<Folder Name="LevelMenu" ID="{DAEC08AE-3C94-43F8-B643-7F7AAE409FB3}" ShortID="362474383">
 							<ChildrenList>
-								<Sound Name="UI_LevelMenu_LockedLevel_Button" ID="{6BDEC81A-DB2F-4753-BFC4-6A455CE6722E}" ShortID="379850565" Type="SoundFX">
+								<Sound Name="UI_LevelMenu_LockedLevel_Button" ID="{6BDEC81A-DB2F-4753-BFC4-6A455CE6722E}" ShortID="379850565">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -45,7 +45,7 @@
 										<AudioFileSource Name="UI_LevelMenu_LockedLevel_Button" ID="{17DE7BFC-B954-4164-B515-0B20C77D05DA}" ShortID="36414370">
 											<PropertyList>
 												<Property Name="FadeInDuration" Type="Real64" Value="0.01053153055183"/>
-												<Property Name="TrimBegin" Type="Real64" Value="1.72014999013223E-02"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.0172014999013223"/>
 											</PropertyList>
 											<Language>SFX</Language>
 											<AudioFile>UI_LevelMenu_LockedLevel_Button.wav</AudioFile>
@@ -55,7 +55,7 @@
 										<ActiveSource Name="UI_LevelMenu_LockedLevel_Button" ID="{17DE7BFC-B954-4164-B515-0B20C77D05DA}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="UI_LevelMenu_UnlockedLevel_Button" ID="{12B27DC7-C6A1-44BA-B10D-A1E96970FA7D}" ShortID="355684036" Type="SoundFX">
+								<Sound Name="UI_LevelMenu_UnlockedLevel_Button" ID="{12B27DC7-C6A1-44BA-B10D-A1E96970FA7D}" ShortID="355684036">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -67,7 +67,7 @@
 									<ChildrenList>
 										<AudioFileSource Name="UI_LevelMenu_UnlockedLevel_Button" ID="{AD6181DD-5653-489C-B7E9-07ED692B07FD}" ShortID="443061028">
 											<PropertyList>
-												<Property Name="FadeInDuration" Type="Real64" Value="5.38510490045633E-02"/>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.0538510490045633"/>
 											</PropertyList>
 											<Language>SFX</Language>
 											<AudioFile>UI_LevelMenu_UnlockedLevel_Button.wav</AudioFile>
@@ -77,7 +77,7 @@
 										<ActiveSource Name="UI_LevelMenu_UnlockedLevel_Button" ID="{AD6181DD-5653-489C-B7E9-07ED692B07FD}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="UI_LevelMenu_Level_Select" ID="{1FF68ADF-487F-4A7B-8FFA-1EAA49C572E3}" ShortID="13377417" Type="SoundFX">
+								<Sound Name="UI_LevelMenu_Level_Select" ID="{1FF68ADF-487F-4A7B-8FFA-1EAA49C572E3}" ShortID="13377417">
 									<PropertyList>
 										<Property Name="Pitch" Type="int32">
 											<ModifierList>
@@ -152,7 +152,7 @@
 					<ChildrenList>
 						<Folder Name="Button" ID="{DE7B1418-E708-47C8-A200-FF9881CF430F}" ShortID="810269073">
 							<ChildrenList>
-								<Sound Name="GUI_Restart_Button" ID="{0B3E72C5-C3B0-4515-87B2-23533C0D359C}" ShortID="74922058" Type="SoundFX">
+								<Sound Name="GUI_Restart_Button" ID="{0B3E72C5-C3B0-4515-87B2-23533C0D359C}" ShortID="74922058">
 									<PropertyList>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
@@ -178,7 +178,7 @@
 										<ActiveSource Name="UI_PopupMenu_Restart_Button" ID="{C33BBCE8-2BA9-4E10-A717-0C8957CB8868}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="GUI_MainMenu_Button" ID="{51AAD0C9-CC53-44CF-9C74-31CCE60DD88B}" ShortID="880910661" Type="SoundFX">
+								<Sound Name="GUI_MainMenu_Button" ID="{51AAD0C9-CC53-44CF-9C74-31CCE60DD88B}" ShortID="880910661">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -204,7 +204,7 @@
 						</Folder>
 						<Folder Name="WinScreen" ID="{F52A7E50-673A-4048-BA36-C16061250557}" ShortID="173806004">
 							<ChildrenList>
-								<Sound Name="UI_WinScreen_MainMenu_Button" ID="{B4E9A3C2-5B9D-4615-A111-2A6830F770CD}" ShortID="970898646" Type="SoundFX">
+								<Sound Name="UI_WinScreen_MainMenu_Button" ID="{B4E9A3C2-5B9D-4615-A111-2A6830F770CD}" ShortID="970898646">
 									<PropertyList>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
@@ -230,7 +230,7 @@
 										<ActiveSource Name="UI_WinScreen_MainMenu_Button" ID="{3BE76FDC-AA0D-48C0-9079-826F4A789B82}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="UI_PopupMenu_Restart_Button" ID="{7E7CE96F-F4F5-4537-A080-28893E2D3E75}" ShortID="937139327" Type="SoundFX">
+								<Sound Name="UI_PopupMenu_Restart_Button" ID="{7E7CE96F-F4F5-4537-A080-28893E2D3E75}" ShortID="937139327">
 									<PropertyList>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
@@ -259,7 +259,7 @@
 										<ActiveSource Name="UI_PopupMenu_Restart_Button" ID="{FE5BB575-A8CF-443D-B675-B3D1ADDA79E5}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="UI_WinScreen_Next_Button" ID="{36F46E1D-5903-4849-AEB7-20E88C03BEF1}" ShortID="66759362" Type="SoundFX">
+								<Sound Name="UI_WinScreen_Next_Button" ID="{36F46E1D-5903-4849-AEB7-20E88C03BEF1}" ShortID="66759362">
 									<PropertyList>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
@@ -332,7 +332,7 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<Sound Name="UI_Spaceship_Move_01" ID="{CC5FA5DA-3CB0-409A-9C4B-73FCE91CFD3D}" ShortID="909511608" Type="SoundFX">
+								<Sound Name="UI_Spaceship_Move_01" ID="{CC5FA5DA-3CB0-409A-9C4B-73FCE91CFD3D}" ShortID="909511608">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -351,7 +351,7 @@
 										<ActiveSource Name="UI_Spaceship_Move_01" ID="{C0DD1639-B16C-4F03-A678-8917689B20FB}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="UI_Spaceship_Move_02" ID="{70FB3A52-DCE4-4534-8783-9EC9AD70A932}" ShortID="377418314" Type="SoundFX">
+								<Sound Name="UI_Spaceship_Move_02" ID="{70FB3A52-DCE4-4534-8783-9EC9AD70A932}" ShortID="377418314">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -370,7 +370,7 @@
 										<ActiveSource Name="UI_Spaceship_Move_02" ID="{2BF75E6A-4772-4530-8FF1-506CDF5CF79E}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="UI_Spaceship_Move_03" ID="{919E067B-F113-49B8-AA8C-961924FC96A1}" ShortID="434417732" Type="SoundFX">
+								<Sound Name="UI_Spaceship_Move_03" ID="{919E067B-F113-49B8-AA8C-961924FC96A1}" ShortID="434417732">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -417,7 +417,7 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<Sound Name="UI_Spaceship_Landing_01" ID="{6D07E7C7-1331-4F63-9A7F-054747D7C381}" ShortID="905671505" Type="SoundFX">
+								<Sound Name="UI_Spaceship_Landing_01" ID="{6D07E7C7-1331-4F63-9A7F-054747D7C381}" ShortID="905671505">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -436,7 +436,7 @@
 										<ActiveSource Name="UI_Spaceship_Landing_01" ID="{DBB52284-2A83-46ED-81CF-3063A10CF430}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="UI_Spaceship_Landing_02" ID="{F7D49B39-653D-43EC-84D4-A125A5A40DED}" ShortID="817827573" Type="SoundFX">
+								<Sound Name="UI_Spaceship_Landing_02" ID="{F7D49B39-653D-43EC-84D4-A125A5A40DED}" ShortID="817827573">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -455,7 +455,7 @@
 										<ActiveSource Name="UI_Spaceship_Landing_02" ID="{9EB59148-D7AA-4D85-A76F-005324A0F723}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="UI_Spaceship_Landing_03" ID="{B1A2D895-1BDE-4955-95C1-4A8334EBBE72}" ShortID="625241931" Type="SoundFX">
+								<Sound Name="UI_Spaceship_Landing_03" ID="{B1A2D895-1BDE-4955-95C1-4A8334EBBE72}" ShortID="625241931">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -476,7 +476,7 @@
 								</Sound>
 							</ChildrenList>
 						</RandomSequenceContainer>
-						<Sound Name="UI_Spacehip_Idle_01" ID="{4783B7BE-919E-4355-B43B-400E78469585}" ShortID="407550426" Type="SoundFX">
+						<Sound Name="UI_Spacehip_Idle_01" ID="{4783B7BE-919E-4355-B43B-400E78469585}" ShortID="407550426">
 							<PropertyList>
 								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 								<Property Name="Volume" Type="Real64">

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{40962F73-D128-46AE-8BCC-672D34CD048C}" SchemaVersion="75">
+<WwiseDocument Type="WorkUnit" ID="{40962F73-D128-46AE-8BCC-672D34CD048C}" SchemaVersion="85">
 	<Events>
 		<WorkUnit Name="SFX" ID="{40962F73-D128-46AE-8BCC-672D34CD048C}" PersistMode="Standalone">
 			<ChildrenList>
@@ -7,72 +7,91 @@
 					<ChildrenList>
 						<Event Name="Character_Blocked" ID="{C6E1CF55-124D-4196-8750-1D61C79A4668}">
 							<ChildrenList>
-								<Action Name="Play" ID="{13E10D8B-666A-4B57-8D55-A15EC448A923}" ShortID="37799064" Type="Play" Scope="One" Global="false">
-									<ElementList>
-										<Element ID="{440D2DBF-00BD-4C3E-8CED-01DBAEAA14E6}" Global="false">
+								<Action Name="" ID="{13E10D8B-666A-4B57-8D55-A15EC448A923}" ShortID="37799064">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
 											<ObjectRef Name="SFX_Character_Blocked" ID="{08930220-7D57-45AD-8657-77F02CC39AAB}" WorkUnitID="{4AB0081F-95CC-4563-9E37-C5B4336B598F}"/>
-										</Element>
-									</ElementList>
+										</Reference>
+									</ReferenceList>
 								</Action>
-								<Action Name="Play" ID="{F42475DB-4D6E-4997-8D7A-2CB2BF576E50}" ShortID="901593464" Type="Play" Scope="One" Global="false">
-									<ElementList>
-										<Element ID="{7DB99F40-B15F-468B-BAF0-BCE6B67ADE9D}" Global="false">
+								<Action Name="" ID="{F42475DB-4D6E-4997-8D7A-2CB2BF576E50}" ShortID="901593464">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
 											<ObjectRef Name="LevelMusic_PianoCluster" ID="{A2CD6A07-F5CB-4F91-B3B8-3D3684C53A86}" WorkUnitID="{10797219-A9C7-4EA5-B09A-EF88C7225BB7}"/>
-										</Element>
-									</ElementList>
+										</Reference>
+									</ReferenceList>
 								</Action>
 							</ChildrenList>
 						</Event>
 						<Event Name="Level_Start" ID="{FD3105A9-2679-4479-829E-84B047922D6E}">
 							<ChildrenList>
-								<Action Name="Play" ID="{C324568D-4A26-4C79-8FD4-213F837F2BB4}" ShortID="878333154" Type="Play" Scope="One" Global="false">
+								<Action Name="" ID="{C324568D-4A26-4C79-8FD4-213F837F2BB4}" ShortID="878333154">
 									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="1"/>
 										<Property Name="Delay" Type="Real64" Value="2.1"/>
 									</PropertyList>
-									<ElementList>
-										<Element ID="{4DB199B6-13C3-4F01-98F3-A0F3CEAEDC9E}" Global="false">
+									<ReferenceList>
+										<Reference Name="Target">
 											<ObjectRef Name="SFX_LevelStart" ID="{1966C171-9A57-4F37-948E-CBD131CE636F}" WorkUnitID="{4AB0081F-95CC-4563-9E37-C5B4336B598F}"/>
-										</Element>
-									</ElementList>
+										</Reference>
+									</ReferenceList>
 								</Action>
 							</ChildrenList>
 						</Event>
 						<Event Name="Ketsu_Explosion" ID="{33B04AEB-E661-4E50-BFB8-32408372F82B}">
 							<ChildrenList>
-								<Action Name="Play" ID="{F8D3CD89-6CCA-41ED-A7E9-E9F0CBB91D92}" ShortID="704099585" Type="Play" Scope="One" Global="false">
-									<ElementList>
-										<Element ID="{1292DA25-B31E-4948-90FD-C8DDCB0FF63A}" Global="false">
-											<ObjectRef Name="Ketsu_Explosion" ID="{F4022B6F-19A2-489D-AA45-C234E1D856CB}" WorkUnitID="{4AB0081F-95CC-4563-9E37-C5B4336B598F}"/>
-										</Element>
-									</ElementList>
-								</Action>
-								<Action Name="Stop" ID="{140619AB-9236-465F-ADCE-2FCCE0EBF5FE}" ShortID="998794373" Type="Stop" Scope="One" Global="true">
+								<Action Name="" ID="{F8D3CD89-6CCA-41ED-A7E9-E9F0CBB91D92}" ShortID="704099585">
 									<PropertyList>
-										<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+										<Property Name="ActionType" Type="int16" Value="1"/>
 									</PropertyList>
-									<ElementList>
-										<Element ID="{F4905594-3036-4C0E-AD77-B6371F6CB2FF}" Global="true">
-											<ObjectRef Name="Ketsu_Extermination" ID="{061C80B2-BFAC-47EB-9050-3CA510637A66}" WorkUnitID="{4AB0081F-95CC-4563-9E37-C5B4336B598F}"/>
-										</Element>
-									</ElementList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Ketsu_Explosion" ID="{F4022B6F-19A2-489D-AA45-C234E1D856CB}" WorkUnitID="{4AB0081F-95CC-4563-9E37-C5B4336B598F}"/>
+										</Reference>
+									</ReferenceList>
 								</Action>
-								<Action Name="Stop" ID="{E05FBBF1-8781-4C29-8105-0C42A2A0DDE6}" ShortID="82628739" Type="Stop" Scope="One" Global="true">
-									<ElementList>
-										<Element ID="{4E82BC70-EF7E-4082-8E4F-F4C2EC1C545F}" Global="true">
+								<Action Name="" ID="{140619AB-9236-465F-ADCE-2FCCE0EBF5FE}" ShortID="998794373">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+										<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Ketsu_Extermination" ID="{061C80B2-BFAC-47EB-9050-3CA510637A66}" WorkUnitID="{4AB0081F-95CC-4563-9E37-C5B4336B598F}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{E05FBBF1-8781-4C29-8105-0C42A2A0DDE6}" ShortID="82628739">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
 											<ObjectRef Name="SFX_Ketsu_BuildUp" ID="{34295A4A-6C83-4BB1-B048-EE32BD894243}" WorkUnitID="{4AB0081F-95CC-4563-9E37-C5B4336B598F}"/>
-										</Element>
-									</ElementList>
+										</Reference>
+									</ReferenceList>
 								</Action>
 							</ChildrenList>
 						</Event>
 						<Event Name="Ketsu_Extermination" ID="{CC5E6326-1AAC-43DB-92E4-D64FE2B7DC2B}">
 							<ChildrenList>
-								<Action Name="Play" ID="{7E8289C5-80FE-472A-B75E-EC610ED09284}" ShortID="693651069" Type="Play" Scope="One" Global="false">
-									<ElementList>
-										<Element ID="{9189AEF3-DCB3-4AFE-9199-481A8AE7436E}" Global="false">
+								<Action Name="" ID="{7E8289C5-80FE-472A-B75E-EC610ED09284}" ShortID="693651069">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
 											<ObjectRef Name="Ketsu_Extermination" ID="{061C80B2-BFAC-47EB-9050-3CA510637A66}" WorkUnitID="{4AB0081F-95CC-4563-9E37-C5B4336B598F}"/>
-										</Element>
-									</ElementList>
+										</Reference>
+									</ReferenceList>
 								</Action>
 							</ChildrenList>
 						</Event>
@@ -82,44 +101,54 @@
 					<ChildrenList>
 						<Event Name="Collect_Gem" ID="{8816915C-FE30-4470-AC46-7A0C90A17746}">
 							<ChildrenList>
-								<Action Name="Play" ID="{23B7CBB0-6E9D-48C9-A1F2-4AC20252278F}" ShortID="1047933544" Type="Play" Scope="One" Global="false">
-									<ElementList>
-										<Element ID="{978F767A-80E3-4200-8C12-5DE39861CAF8}" Global="false">
+								<Action Name="" ID="{23B7CBB0-6E9D-48C9-A1F2-4AC20252278F}" ShortID="1047933544">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
 											<ObjectRef Name="Gem" ID="{5528C550-5391-455E-B250-CBF72FEE36FD}" WorkUnitID="{4AB0081F-95CC-4563-9E37-C5B4336B598F}"/>
-										</Element>
-									</ElementList>
+										</Reference>
+									</ReferenceList>
 								</Action>
 							</ChildrenList>
 						</Event>
 						<Event Name="Collect_Gas" ID="{B8A107A2-7DC1-4371-A7C4-B547998535B1}">
 							<ChildrenList>
-								<Action Name="Play" ID="{7D3C31B4-53EA-4841-A237-D32FE8B922D0}" ShortID="143251159" Type="Play" Scope="One" Global="false">
-									<ElementList>
-										<Element ID="{BD34F77C-7166-462C-A8BD-368991B2A2D5}" Global="false">
+								<Action Name="" ID="{7D3C31B4-53EA-4841-A237-D32FE8B922D0}" ShortID="143251159">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
 											<ObjectRef Name="Gas" ID="{5FD82C93-6376-4E14-AAEA-081313235275}" WorkUnitID="{4AB0081F-95CC-4563-9E37-C5B4336B598F}"/>
-										</Element>
-									</ElementList>
+										</Reference>
+									</ReferenceList>
 								</Action>
 							</ChildrenList>
 						</Event>
 						<Event Name="Collect_LastGas" ID="{5BD5532E-DA01-4B92-9CA0-8B345D7BF9F0}">
 							<ChildrenList>
-								<Action Name="Play" ID="{F906C0F1-9925-4AC2-A0CB-8E4636CAB41F}" ShortID="693063852" Type="Play" Scope="One" Global="false">
-									<ElementList>
-										<Element ID="{E8EFF26C-797B-4C16-9973-4251D08C914F}" Global="false">
-											<ObjectRef Name="Gas" ID="{5FD82C93-6376-4E14-AAEA-081313235275}" WorkUnitID="{4AB0081F-95CC-4563-9E37-C5B4336B598F}"/>
-										</Element>
-									</ElementList>
-								</Action>
-								<Action Name="Play" ID="{57E29EBA-A1E6-4EC7-A6AD-A1FA1F32056F}" ShortID="676231674" Type="Play" Scope="One" Global="false">
+								<Action Name="" ID="{F906C0F1-9925-4AC2-A0CB-8E4636CAB41F}" ShortID="693063852">
 									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Gas" ID="{5FD82C93-6376-4E14-AAEA-081313235275}" WorkUnitID="{4AB0081F-95CC-4563-9E37-C5B4336B598F}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{57E29EBA-A1E6-4EC7-A6AD-A1FA1F32056F}" ShortID="676231674">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="1"/>
 										<Property Name="FadeTime" Type="Real64" Value="2"/>
 									</PropertyList>
-									<ElementList>
-										<Element ID="{2F4E9C5A-6120-4AE9-A949-5C628BDDBDF1}" Global="false">
+									<ReferenceList>
+										<Reference Name="Target">
 											<ObjectRef Name="Glimmers" ID="{CF983779-9783-4D10-9ED2-9EEF6E96C5C2}" WorkUnitID="{10797219-A9C7-4EA5-B09A-EF88C7225BB7}"/>
-										</Element>
-									</ElementList>
+										</Reference>
+									</ReferenceList>
 								</Action>
 							</ChildrenList>
 						</Event>
@@ -129,60 +158,75 @@
 					<ChildrenList>
 						<Event Name="Transform_ToKetsu" ID="{817FCAD0-0B99-490F-BB41-A93A56B87BD6}">
 							<ChildrenList>
-								<Action Name="Play" ID="{D3489379-5EDB-4A5E-ABD1-C3F170743DCE}" ShortID="280515926" Type="Play" Scope="One" Global="false">
-									<ElementList>
-										<Element ID="{755976F0-C39D-4923-B48C-B38832B0ABF7}" Global="false">
-											<ObjectRef Name="Transform_ToKetsu" ID="{EB866A0E-B3D1-4C0E-AA0C-8993E9818615}" WorkUnitID="{4AB0081F-95CC-4563-9E37-C5B4336B598F}"/>
-										</Element>
-									</ElementList>
-								</Action>
-								<Action Name="Play" ID="{A6A389A2-DCC4-415C-AB3E-0B51BB448D1A}" ShortID="368602017" Type="Play" Scope="One" Global="false">
+								<Action Name="" ID="{D3489379-5EDB-4A5E-ABD1-C3F170743DCE}" ShortID="280515926">
 									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Transform_ToKetsu" ID="{EB866A0E-B3D1-4C0E-AA0C-8993E9818615}" WorkUnitID="{4AB0081F-95CC-4563-9E37-C5B4336B598F}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{A6A389A2-DCC4-415C-AB3E-0B51BB448D1A}" ShortID="368602017">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="1"/>
 										<Property Name="FadeTime" Type="Real64" Value="1"/>
 									</PropertyList>
-									<ElementList>
-										<Element ID="{262A2D00-2F77-49D1-9262-7660863156BA}" Global="false">
+									<ReferenceList>
+										<Reference Name="Target">
 											<ObjectRef Name="SFX_Ketsu_BuildUp" ID="{34295A4A-6C83-4BB1-B048-EE32BD894243}" WorkUnitID="{4AB0081F-95CC-4563-9E37-C5B4336B598F}"/>
-										</Element>
-									</ElementList>
+										</Reference>
+									</ReferenceList>
 								</Action>
 							</ChildrenList>
 						</Event>
 						<Event Name="Transform_FromKetsu" ID="{EFBE8801-F644-41D8-AC83-8FFBAE216F44}">
 							<ChildrenList>
-								<Action Name="Play" ID="{0F6100B2-E395-4484-BFD1-883D189618BB}" ShortID="271007279" Type="Play" Scope="One" Global="false">
-									<ElementList>
-										<Element ID="{F03D51E9-83BE-47C0-AC57-B79E2619A4BE}" Global="false">
+								<Action Name="" ID="{0F6100B2-E395-4484-BFD1-883D189618BB}" ShortID="271007279">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
 											<ObjectRef Name="Transform_FromKetsu" ID="{B0597F42-416A-413A-91E9-05AC6E442E02}" WorkUnitID="{4AB0081F-95CC-4563-9E37-C5B4336B598F}"/>
-										</Element>
-									</ElementList>
+										</Reference>
+									</ReferenceList>
 								</Action>
-								<Action Name="Stop" ID="{BF96B840-3F68-409D-95FA-B4E9E09D653E}" ShortID="443937255" Type="Stop" Scope="One" Global="true">
+								<Action Name="" ID="{BF96B840-3F68-409D-95FA-B4E9E09D653E}" ShortID="443937255">
 									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
 										<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
 									</PropertyList>
-									<ElementList>
-										<Element ID="{0182A442-23A0-47CE-9E2F-084646F5B2FC}" Global="true">
+									<ReferenceList>
+										<Reference Name="Target">
 											<ObjectRef Name="Transform_ToKetsu" ID="{EB866A0E-B3D1-4C0E-AA0C-8993E9818615}" WorkUnitID="{4AB0081F-95CC-4563-9E37-C5B4336B598F}"/>
-										</Element>
-									</ElementList>
+										</Reference>
+									</ReferenceList>
 								</Action>
-								<Action Name="Stop" ID="{73CC0BC4-57B4-4C12-924A-AAF7388F8D3B}" ShortID="860258575" Type="Stop" Scope="One" Global="true">
+								<Action Name="" ID="{73CC0BC4-57B4-4C12-924A-AAF7388F8D3B}" ShortID="860258575">
 									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
 										<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
 									</PropertyList>
-									<ElementList>
-										<Element ID="{A549CC73-B8D5-4DAB-9F80-9B1798FAB5E2}" Global="true">
+									<ReferenceList>
+										<Reference Name="Target">
 											<ObjectRef Name="SFX_Ketsu_BuildUp" ID="{34295A4A-6C83-4BB1-B048-EE32BD894243}" WorkUnitID="{4AB0081F-95CC-4563-9E37-C5B4336B598F}"/>
-										</Element>
-									</ElementList>
+										</Reference>
+									</ReferenceList>
 								</Action>
-								<Action Name="Reset Playlist" ID="{5457EFD3-5CDA-49E8-B1DA-D18DCAEBB856}" ShortID="169384687" Type="ResetPlaylist" Scope="One" Global="true">
-									<ElementList>
-										<Element ID="{5B32E1FA-9129-4D94-A80D-AB9F52E6C723}" Global="true">
+								<Action Name="" ID="{5457EFD3-5CDA-49E8-B1DA-D18DCAEBB856}" ShortID="169384687">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="42"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
 											<ObjectRef Name="Move_Ketsu" ID="{8479FDE7-9260-41EE-800F-02B5E206A5BF}" WorkUnitID="{9860AE83-BA8D-45F2-8269-B8ABC4AA01C0}"/>
-										</Element>
-									</ElementList>
+										</Reference>
+									</ReferenceList>
 								</Action>
 							</ChildrenList>
 						</Event>

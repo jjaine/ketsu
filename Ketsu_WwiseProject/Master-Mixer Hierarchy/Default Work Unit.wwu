@@ -1,15 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{68D58777-3A89-43FF-A94C-B9BE7BE915B7}" SchemaVersion="75">
+<WwiseDocument Type="WorkUnit" ID="{68D58777-3A89-43FF-A94C-B9BE7BE915B7}" SchemaVersion="85">
 	<Busses>
 		<WorkUnit Name="Default Work Unit" ID="{68D58777-3A89-43FF-A94C-B9BE7BE915B7}" PersistMode="Standalone">
 			<ChildrenList>
 				<Bus Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}">
+					<PropertyList>
+						<Property Name="DivergenceCenter" Type="int32">
+							<ValueList>
+								<Value>100</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="AudioDevice" PluginName="System" CompanyID="0" PluginID="174" PluginType="7">
+							<ObjectRef Name="System" ID="{71818767-176D-418C-A3C1-32967176801A}" WorkUnitID="{96FBFFEF-41F7-4CE0-B784-BC3D0CF5B6CD}"/>
+						</Reference>
+					</ReferenceList>
 					<ChildrenList>
 						<Bus Name="Music" ID="{4D732450-C3D1-461E-9717-2C97E49E5459}">
 							<PropertyList>
 								<Property Name="BusVolume" Type="Real64">
 									<ValueList>
 										<Value>-2</Value>
+									</ValueList>
+								</Property>
+								<Property Name="DivergenceCenter" Type="int32">
+									<ValueList>
+										<Value>100</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -46,6 +63,11 @@
 										<Value>-2</Value>
 									</ValueList>
 								</Property>
+								<Property Name="DivergenceCenter" Type="int32">
+									<ValueList>
+										<Value>100</Value>
+									</ValueList>
+								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Effect0" PluginName="Wwise Matrix Reverb" CompanyID="0" PluginID="115" PluginType="3">
@@ -60,13 +82,38 @@
 										<Value>-2</Value>
 									</ValueList>
 								</Property>
+								<Property Name="DivergenceCenter" Type="int32">
+									<ValueList>
+										<Value>100</Value>
+									</ValueList>
+								</Property>
 							</PropertyList>
 						</Bus>
-						<Bus Name="Characters" ID="{8086BEDF-F6E5-4949-AE51-1F1335C4F909}"/>
+						<Bus Name="Characters" ID="{8086BEDF-F6E5-4949-AE51-1F1335C4F909}">
+							<PropertyList>
+								<Property Name="DivergenceCenter" Type="int32">
+									<ValueList>
+										<Value>100</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+						</Bus>
 					</ChildrenList>
 				</Bus>
-				<Bus Name="Master Secondary Bus" ID="{D2E0BC7E-7B3F-4FFE-A670-FAE02761B631}"/>
-				<MotionBus Name="Master Motion Bus" ID="{20A630BA-3398-4676-B927-1004DFE41FD8}"/>
+				<Bus Name="Master Secondary Bus" ID="{D2E0BC7E-7B3F-4FFE-A670-FAE02761B631}">
+					<PropertyList>
+						<Property Name="DivergenceCenter" Type="int32">
+							<ValueList>
+								<Value>100</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="AudioDevice" PluginName="System" CompanyID="0" PluginID="174" PluginType="7">
+							<ObjectRef Name="System" ID="{71818767-176D-418C-A3C1-32967176801A}" WorkUnitID="{96FBFFEF-41F7-4CE0-B784-BC3D0CF5B6CD}"/>
+						</Reference>
+					</ReferenceList>
+				</Bus>
 			</ChildrenList>
 		</WorkUnit>
 	</Busses>

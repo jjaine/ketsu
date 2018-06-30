@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{1F0C0A82-2178-40F6-8FD4-CC969A0449B7}" SchemaVersion="75" RootDocumentID="{858FF141-AF43-46C3-90C4-9FC3A90FEFF3}">
+<WwiseDocument Type="WorkUnit" ID="{1F0C0A82-2178-40F6-8FD4-CC969A0449B7}" SchemaVersion="85" RootDocumentID="{858FF141-AF43-46C3-90C4-9FC3A90FEFF3}">
 	<Events>
 		<WorkUnit Name="GUI" ID="{1F0C0A82-2178-40F6-8FD4-CC969A0449B7}" OwnerID="{858FF141-AF43-46C3-90C4-9FC3A90FEFF3}" PersistMode="Nested">
 			<ChildrenList>
@@ -7,37 +7,51 @@
 					<ChildrenList>
 						<Event Name="GUI_MainMenu_Button" ID="{C79D5FC5-F9DC-48ED-B04E-228EB0E237F9}">
 							<ChildrenList>
-								<Action Name="Play" ID="{611638AA-34C0-41AB-8886-1DD2B4AF8DF5}" ShortID="50580585" Type="Play" Scope="One" Global="false">
-									<ElementList>
-										<Element ID="{D21228D9-5A20-448E-BD56-A97FB10FD91C}" Global="false">
+								<Action Name="" ID="{611638AA-34C0-41AB-8886-1DD2B4AF8DF5}" ShortID="50580585">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
 											<ObjectRef Name="GUI_MainMenu_Button" ID="{51AAD0C9-CC53-44CF-9C74-31CCE60DD88B}" WorkUnitID="{31E82EE3-46D8-44FD-B484-8AC77E38A15B}"/>
-										</Element>
-									</ElementList>
+										</Reference>
+									</ReferenceList>
 								</Action>
-								<Action Name="Stop" ID="{12DECFA5-E44B-46C5-84D3-4B947FADC7FF}" ShortID="664536204" Type="Stop" Scope="One" Global="true">
-									<ElementList>
-										<Element ID="{B2B2E30D-9CDD-452B-8543-8C620FAEA2F0}" Global="true">
+								<Action Name="" ID="{12DECFA5-E44B-46C5-84D3-4B947FADC7FF}" ShortID="664536204">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
 											<ObjectRef Name="Glimmers" ID="{CF983779-9783-4D10-9ED2-9EEF6E96C5C2}" WorkUnitID="{10797219-A9C7-4EA5-B09A-EF88C7225BB7}"/>
-										</Element>
-									</ElementList>
+										</Reference>
+									</ReferenceList>
 								</Action>
 							</ChildrenList>
 						</Event>
 						<Event Name="GUI_Restart_Button" ID="{ABBA25FD-30BE-442B-8626-3250E403C362}">
 							<ChildrenList>
-								<Action Name="Play" ID="{AA41DA4C-571C-4895-A49F-17750406612F}" ShortID="434453556" Type="Play" Scope="One" Global="false">
-									<ElementList>
-										<Element ID="{DB04D8CA-FCC7-40FC-8344-A299FE60B115}" Global="false">
+								<Action Name="" ID="{AA41DA4C-571C-4895-A49F-17750406612F}" ShortID="434453556">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
 											<ObjectRef Name="GUI_Restart_Button" ID="{0B3E72C5-C3B0-4515-87B2-23533C0D359C}" WorkUnitID="{31E82EE3-46D8-44FD-B484-8AC77E38A15B}"/>
-										</Element>
-									</ElementList>
+										</Reference>
+									</ReferenceList>
 								</Action>
-								<Action Name="Stop" ID="{C5C26E9A-5ABB-486B-B87D-100ECE7C3FB4}" ShortID="302084328" Type="Stop" Scope="One" Global="true">
-									<ElementList>
-										<Element ID="{27A65937-98B9-4313-A856-9C9F02A2B8ED}" Global="true">
+								<Action Name="" ID="{C5C26E9A-5ABB-486B-B87D-100ECE7C3FB4}" ShortID="302084328">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
 											<ObjectRef Name="Glimmers" ID="{CF983779-9783-4D10-9ED2-9EEF6E96C5C2}" WorkUnitID="{10797219-A9C7-4EA5-B09A-EF88C7225BB7}"/>
-										</Element>
-									</ElementList>
+										</Reference>
+									</ReferenceList>
 								</Action>
 							</ChildrenList>
 						</Event>
@@ -47,55 +61,76 @@
 					<ChildrenList>
 						<Event Name="WinScreen_Next_Button" ID="{336B79AB-F429-4846-843B-03130AE3C738}">
 							<ChildrenList>
-								<Action Name="Play" ID="{527BCB37-FFC9-4161-941E-C90EE4BDC953}" ShortID="896710988" Type="Play" Scope="One" Global="false">
-									<ElementList>
-										<Element ID="{C31C3833-75CA-402E-8B19-DF78453B8A0A}" Global="false">
+								<Action Name="" ID="{527BCB37-FFC9-4161-941E-C90EE4BDC953}" ShortID="896710988">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
 											<ObjectRef Name="UI_WinScreen_Next_Button" ID="{36F46E1D-5903-4849-AEB7-20E88C03BEF1}" WorkUnitID="{31E82EE3-46D8-44FD-B484-8AC77E38A15B}"/>
-										</Element>
-									</ElementList>
+										</Reference>
+									</ReferenceList>
 								</Action>
-								<Action Name="Stop" ID="{2311B0EF-6AFC-4C12-9B92-1E8B832F7466}" ShortID="190079249" Type="Stop" Scope="One" Global="true">
-									<ElementList>
-										<Element ID="{38181183-F3DC-43CE-830B-C010B33A4B58}" Global="true">
+								<Action Name="" ID="{2311B0EF-6AFC-4C12-9B92-1E8B832F7466}" ShortID="190079249">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
 											<ObjectRef Name="Glimmers" ID="{CF983779-9783-4D10-9ED2-9EEF6E96C5C2}" WorkUnitID="{10797219-A9C7-4EA5-B09A-EF88C7225BB7}"/>
-										</Element>
-									</ElementList>
+										</Reference>
+									</ReferenceList>
 								</Action>
 							</ChildrenList>
 						</Event>
 						<Event Name="WinScreen_MainMenu_Button" ID="{1FF2260A-17ED-4DF6-B496-0DBCAE0BC023}">
 							<ChildrenList>
-								<Action Name="Play" ID="{0B878538-3BE5-48CF-A269-1E6F0E592FC0}" ShortID="368032437" Type="Play" Scope="One" Global="false">
-									<ElementList>
-										<Element ID="{EF5280A2-C6A9-4CB7-BF35-C3118E14DA53}" Global="false">
+								<Action Name="" ID="{0B878538-3BE5-48CF-A269-1E6F0E592FC0}" ShortID="368032437">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
 											<ObjectRef Name="UI_WinScreen_MainMenu_Button" ID="{B4E9A3C2-5B9D-4615-A111-2A6830F770CD}" WorkUnitID="{31E82EE3-46D8-44FD-B484-8AC77E38A15B}"/>
-										</Element>
-									</ElementList>
+										</Reference>
+									</ReferenceList>
 								</Action>
-								<Action Name="Stop" ID="{C3A57B01-CAC7-4AC9-A502-D5F3D0B466CC}" ShortID="923129127" Type="Stop" Scope="One" Global="true">
-									<ElementList>
-										<Element ID="{B556459C-F01F-481F-B9F5-7AE4C456E48F}" Global="true">
+								<Action Name="" ID="{C3A57B01-CAC7-4AC9-A502-D5F3D0B466CC}" ShortID="923129127">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
 											<ObjectRef Name="Glimmers" ID="{CF983779-9783-4D10-9ED2-9EEF6E96C5C2}" WorkUnitID="{10797219-A9C7-4EA5-B09A-EF88C7225BB7}"/>
-										</Element>
-									</ElementList>
+										</Reference>
+									</ReferenceList>
 								</Action>
 							</ChildrenList>
 						</Event>
 						<Event Name="WinScreen_Restart_Button" ID="{18CA9614-5252-464D-BB06-3EBD080DB998}">
 							<ChildrenList>
-								<Action Name="Play" ID="{5122D213-2503-4CF8-A522-1FA5B1173713}" ShortID="292551299" Type="Play" Scope="One" Global="false">
-									<ElementList>
-										<Element ID="{7D263AA3-CB84-4747-AC06-786C8C3C0FAD}" Global="false">
+								<Action Name="" ID="{5122D213-2503-4CF8-A522-1FA5B1173713}" ShortID="292551299">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
 											<ObjectRef Name="UI_PopupMenu_Restart_Button" ID="{7E7CE96F-F4F5-4537-A080-28893E2D3E75}" WorkUnitID="{31E82EE3-46D8-44FD-B484-8AC77E38A15B}"/>
-										</Element>
-									</ElementList>
+										</Reference>
+									</ReferenceList>
 								</Action>
-								<Action Name="Stop" ID="{2244A2CC-C806-4F64-ABDD-0FA06020BF05}" ShortID="204124808" Type="Stop" Scope="One" Global="true">
-									<ElementList>
-										<Element ID="{8C5F4EF5-491C-4056-83A3-7D145A6C6641}" Global="true">
+								<Action Name="" ID="{2244A2CC-C806-4F64-ABDD-0FA06020BF05}" ShortID="204124808">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
 											<ObjectRef Name="Glimmers" ID="{CF983779-9783-4D10-9ED2-9EEF6E96C5C2}" WorkUnitID="{10797219-A9C7-4EA5-B09A-EF88C7225BB7}"/>
-										</Element>
-									</ElementList>
+										</Reference>
+									</ReferenceList>
 								</Action>
 							</ChildrenList>
 						</Event>

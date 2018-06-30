@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{85E6A21A-B7B7-42F0-AB24-2AF4F625DF9A}" SchemaVersion="75">
+<WwiseDocument Type="WorkUnit" ID="{85E6A21A-B7B7-42F0-AB24-2AF4F625DF9A}" SchemaVersion="85">
 	<AudioObjects>
 		<WorkUnit Name="World" ID="{85E6A21A-B7B7-42F0-AB24-2AF4F625DF9A}" PersistMode="Standalone">
 			<ChildrenList>
@@ -33,7 +33,7 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<Sound Name="Map_Env_BigWaterStream" ID="{9BEDEEFC-9CDC-4BB3-9E35-A089051146C6}" ShortID="389074898" Type="SoundFX">
+								<Sound Name="Map_Env_BigWaterStream" ID="{9BEDEEFC-9CDC-4BB3-9E35-A089051146C6}" ShortID="389074898">
 									<PropertyList>
 										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 										<Property Name="Volume" Type="Real64">
@@ -60,7 +60,7 @@
 										<ActiveSource Name="Map_Env_BigWaterStream" ID="{B5209613-11C9-4250-973D-EAFB0BD9CD5B}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="Map_Env_Sea" ID="{F7404EA2-2E1A-4CE5-ABC6-F0422532870E}" ShortID="267477657" Type="SoundFX">
+								<Sound Name="Map_Env_Sea" ID="{F7404EA2-2E1A-4CE5-ABC6-F0422532870E}" ShortID="267477657">
 									<PropertyList>
 										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 										<Property Name="Volume" Type="Real64">
@@ -87,7 +87,7 @@
 										<ActiveSource Name="Map_Env_Sea" ID="{15D843D8-4838-4508-8A54-F9A4C574BAF0}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="Map_Env_SmallWaterStream" ID="{946B102C-3E35-42A5-997F-8B100FB49430}" ShortID="929383846" Type="SoundFX">
+								<Sound Name="Map_Env_SmallWaterStream" ID="{946B102C-3E35-42A5-997F-8B100FB49430}" ShortID="929383846">
 									<PropertyList>
 										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 										<Property Name="Volume" Type="Real64">
@@ -114,7 +114,7 @@
 										<ActiveSource Name="Map_Env_SmallWaterStream" ID="{7D45B674-BB05-44B0-AF0D-59CAB4B0ABB5}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="Silence" ID="{519A3E9A-C1E7-40E9-B04F-4C703AFE621E}" ShortID="318374277" Type="SoundFX">
+								<Sound Name="Silence" ID="{519A3E9A-C1E7-40E9-B04F-4C703AFE621E}" ShortID="318374277">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -144,7 +144,7 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<Sound Name="Map_Env_BeesOnFlowers" ID="{66295FB4-E9F9-4FE8-9E77-27B150ED8B4B}" ShortID="837131868" Type="SoundFX">
+								<Sound Name="Map_Env_BeesOnFlowers" ID="{66295FB4-E9F9-4FE8-9E77-27B150ED8B4B}" ShortID="837131868">
 									<PropertyList>
 										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 										<Property Name="Volume" Type="Real64">
@@ -171,7 +171,7 @@
 										<ActiveSource Name="Map_Env_BeesOnFlowers" ID="{5C2BBD93-B129-460E-B0AF-600F234A946A}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="Map_Env_Birds" ID="{1ABF0006-BD16-41A9-9B2E-46F99D6A26A3}" ShortID="841259075" Type="SoundFX">
+								<Sound Name="Map_Env_Birds" ID="{1ABF0006-BD16-41A9-9B2E-46F99D6A26A3}" ShortID="841259075">
 									<PropertyList>
 										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 										<Property Name="Volume" Type="Real64">
@@ -198,7 +198,7 @@
 										<ActiveSource Name="Map_Env_Birds" ID="{7CC293A6-E2D0-4C73-A47A-018537E22AEB}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="Silence" ID="{886ABAA5-AB80-4F08-9D0E-3E411ECAF680}" ShortID="219448703" Type="SoundFX">
+								<Sound Name="Silence" ID="{886ABAA5-AB80-4F08-9D0E-3E411ECAF680}" ShortID="219448703">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -216,7 +216,7 @@
 										<ActiveSource Name="Wwise Silence" ID="{F26E7381-6072-4BA1-BD3B-E5DBCA42E8E5}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="Silence_01" ID="{6A915A2C-461D-4800-944D-B88435020B2F}" ShortID="191168386" Type="SoundFX">
+								<Sound Name="Silence_01" ID="{6A915A2C-461D-4800-944D-B88435020B2F}" ShortID="191168386">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -249,7 +249,7 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<Sound Name="HowlingWind" ID="{45E8D88F-9F1D-4056-BA69-C586A9D21619}" ShortID="779425266" Type="SoundFX">
+								<Sound Name="HowlingWind" ID="{45E8D88F-9F1D-4056-BA69-C586A9D21619}" ShortID="779425266">
 									<PropertyList>
 										<Property Name="Highpass" Type="int16">
 											<ValueList>
@@ -288,14 +288,46 @@
 									<ChildrenList>
 										<SourcePlugin Name="WindGenerator" ID="{19A2788C-8385-497A-BECA-9E958A31D8DC}" ShortID="1070595288" PluginName="WindGenerator" CompanyID="64" PluginID="8727">
 											<PropertyList>
-												<Property Name="HowlingHigh" Type="Real32" Value="0.24"/>
-												<Property Name="HowlingLow" Type="Real32" Value="0.12"/>
-												<Property Name="MasterLowPass" Type="Real32" Value="8542.74"/>
-												<Property Name="Ripple" Type="Real32" Value="0.27"/>
-												<Property Name="Rumble" Type="Real32" Value="0"/>
-												<Property Name="ShortHiss" Type="Real32" Value="0.26"/>
-												<Property Name="StaticLow" Type="Real32" Value="0"/>
-												<Property Name="StaticMid" Type="Real32" Value="0.15"/>
+												<Property Name="HowlingHigh" Type="Real32">
+													<ValueList>
+														<Value>0.24</Value>
+													</ValueList>
+												</Property>
+												<Property Name="HowlingLow" Type="Real32">
+													<ValueList>
+														<Value>0.12</Value>
+													</ValueList>
+												</Property>
+												<Property Name="MasterLowPass" Type="Real32">
+													<ValueList>
+														<Value>8542.74</Value>
+													</ValueList>
+												</Property>
+												<Property Name="Ripple" Type="Real32">
+													<ValueList>
+														<Value>0.27</Value>
+													</ValueList>
+												</Property>
+												<Property Name="Rumble" Type="Real32">
+													<ValueList>
+														<Value>0</Value>
+													</ValueList>
+												</Property>
+												<Property Name="ShortHiss" Type="Real32">
+													<ValueList>
+														<Value>0.26</Value>
+													</ValueList>
+												</Property>
+												<Property Name="StaticLow" Type="Real32">
+													<ValueList>
+														<Value>0</Value>
+													</ValueList>
+												</Property>
+												<Property Name="StaticMid" Type="Real32">
+													<ValueList>
+														<Value>0.15</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<Language>SFX</Language>
 										</SourcePlugin>
@@ -304,7 +336,7 @@
 										<ActiveSource Name="WindGenerator" ID="{19A2788C-8385-497A-BECA-9E958A31D8DC}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="StrongWind" ID="{93C473D0-D5FD-4186-8F65-8F271BC732B8}" ShortID="530086277" Type="SoundFX">
+								<Sound Name="StrongWind" ID="{93C473D0-D5FD-4186-8F65-8F271BC732B8}" ShortID="530086277">
 									<PropertyList>
 										<Property Name="Highpass" Type="int16">
 											<ValueList>
@@ -339,12 +371,36 @@
 									<ChildrenList>
 										<SourcePlugin Name="WindGenerator" ID="{23E88F53-10A5-4E15-B9D0-F3C6AAF0794A}" ShortID="669661827" PluginName="WindGenerator" CompanyID="64" PluginID="8727">
 											<PropertyList>
-												<Property Name="HowlingHigh" Type="Real32" Value="0"/>
-												<Property Name="MasterLowPass" Type="Real32" Value="6531.79"/>
-												<Property Name="Ripple" Type="Real32" Value="0.25"/>
-												<Property Name="Rumble" Type="Real32" Value="0"/>
-												<Property Name="StaticLow" Type="Real32" Value="0.32"/>
-												<Property Name="StaticMid" Type="Real32" Value="0.12"/>
+												<Property Name="HowlingHigh" Type="Real32">
+													<ValueList>
+														<Value>0</Value>
+													</ValueList>
+												</Property>
+												<Property Name="MasterLowPass" Type="Real32">
+													<ValueList>
+														<Value>6531.79</Value>
+													</ValueList>
+												</Property>
+												<Property Name="Ripple" Type="Real32">
+													<ValueList>
+														<Value>0.25</Value>
+													</ValueList>
+												</Property>
+												<Property Name="Rumble" Type="Real32">
+													<ValueList>
+														<Value>0</Value>
+													</ValueList>
+												</Property>
+												<Property Name="StaticLow" Type="Real32">
+													<ValueList>
+														<Value>0.32</Value>
+													</ValueList>
+												</Property>
+												<Property Name="StaticMid" Type="Real32">
+													<ValueList>
+														<Value>0.12</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<Language>SFX</Language>
 										</SourcePlugin>
@@ -353,7 +409,7 @@
 										<ActiveSource Name="WindGenerator" ID="{23E88F53-10A5-4E15-B9D0-F3C6AAF0794A}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="Silence" ID="{056CD9E6-D9AA-446C-A0CB-B9D4D6F93031}" ShortID="850407949" Type="SoundFX">
+								<Sound Name="Silence" ID="{056CD9E6-D9AA-446C-A0CB-B9D4D6F93031}" ShortID="850407949">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -371,7 +427,7 @@
 										<ActiveSource Name="Wwise Silence" ID="{378D3200-87B8-44DF-9C5A-9CEEAFB8A58B}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="Map_Env_MediumWind" ID="{E6B78ECF-2F8A-4C6E-AE74-74E463865928}" ShortID="432075754" Type="SoundFX">
+								<Sound Name="Map_Env_MediumWind" ID="{E6B78ECF-2F8A-4C6E-AE74-74E463865928}" ShortID="432075754">
 									<PropertyList>
 										<Property Name="Inclusion" Type="bool">
 											<ValueList>
@@ -398,7 +454,7 @@
 										<ActiveSource Name="Map_Env_MediumWind" ID="{9B6DC1DE-CB92-4DDC-B7A2-75254A045746}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="Silence_01" ID="{DC51B701-EE40-48AC-B899-AE59979612CA}" ShortID="643593886" Type="SoundFX">
+								<Sound Name="Silence_01" ID="{DC51B701-EE40-48AC-B899-AE59979612CA}" ShortID="643593886">
 									<PropertyList>
 										<Property Name="Inclusion" Type="bool">
 											<ValueList>

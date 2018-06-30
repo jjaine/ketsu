@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{4AB0081F-95CC-4563-9E37-C5B4336B598F}" SchemaVersion="75">
+<WwiseDocument Type="WorkUnit" ID="{4AB0081F-95CC-4563-9E37-C5B4336B598F}" SchemaVersion="85">
 	<AudioObjects>
 		<WorkUnit Name="SFX" ID="{4AB0081F-95CC-4563-9E37-C5B4336B598F}" PersistMode="Standalone">
 			<ChildrenList>
@@ -49,7 +49,7 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<Sound Name="SFX_Collect_Gas_01" ID="{75F97990-28D2-4AF4-BECB-AD6CC68A5D51}" ShortID="135753527" Type="SoundFX">
+								<Sound Name="SFX_Collect_Gas_01" ID="{75F97990-28D2-4AF4-BECB-AD6CC68A5D51}" ShortID="135753527">
 									<PropertyList>
 										<Property Name="Highpass" Type="int16">
 											<ValueList>
@@ -68,7 +68,7 @@
 									<ChildrenList>
 										<AudioFileSource Name="SFX_Collect_Gas_01" ID="{49F5748F-A7E3-4740-9C3C-7E918330F3C6}" ShortID="707047542">
 											<PropertyList>
-												<Property Name="FadeInDuration" Type="Real64" Value="6.04427810200457E-02"/>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.0604427810200457"/>
 												<Property Name="FadeOutDuration" Type="Real64" Value="0.336752637111683"/>
 												<Property Name="TrimBegin" Type="Real64" Value="0.247527579415425"/>
 												<Property Name="TrimEnd" Type="Real64" Value="2.94154867630889"/>
@@ -81,7 +81,7 @@
 										<ActiveSource Name="SFX_Collect_Gas_01" ID="{49F5748F-A7E3-4740-9C3C-7E918330F3C6}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="SFX_Collect_Gas_02" ID="{BEC12746-860E-420E-A1A7-B2DBC7480090}" ShortID="828851603" Type="SoundFX">
+								<Sound Name="SFX_Collect_Gas_02" ID="{BEC12746-860E-420E-A1A7-B2DBC7480090}" ShortID="828851603">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -93,7 +93,7 @@
 									<ChildrenList>
 										<AudioFileSource Name="SFX_Collect_Gas_02" ID="{9A84ED6C-9595-45AD-92D6-510E202BA3FD}" ShortID="739142328">
 											<PropertyList>
-												<Property Name="FadeInDuration" Type="Real64" Value="4.02951873466971E-02"/>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.0402951873466971"/>
 												<Property Name="FadeOutDuration" Type="Real64" Value="0.446125288481289"/>
 												<Property Name="TrimBegin" Type="Real64" Value="0.233136441077319"/>
 												<Property Name="TrimEnd" Type="Real64" Value="3.18331980038907"/>
@@ -147,7 +147,7 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<Sound Name="SFX_Collect_Gem_01" ID="{2DC898A5-3FFF-446E-98D7-8E7781593689}" ShortID="543525254" Type="SoundFX">
+								<Sound Name="SFX_Collect_Gem_01" ID="{2DC898A5-3FFF-446E-98D7-8E7781593689}" ShortID="543525254">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -170,7 +170,7 @@
 										<ActiveSource Name="SFX_Collect_Gem_01" ID="{6705F2B5-377A-4342-A0FD-FB9F85CF2C5C}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="SFX_Collect_Gem_02" ID="{69F9A59B-95BF-494A-A0E0-A29364F7E0FB}" ShortID="481487182" Type="SoundFX">
+								<Sound Name="SFX_Collect_Gem_02" ID="{69F9A59B-95BF-494A-A0E0-A29364F7E0FB}" ShortID="481487182">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -182,7 +182,7 @@
 									<ChildrenList>
 										<AudioFileSource Name="SFX_Collect_Gem_02" ID="{A448DD49-7C5E-4E5F-AAD7-EB0BCF0707F6}" ShortID="652833200">
 											<PropertyList>
-												<Property Name="FadeInDuration" Type="Real64" Value="5.45134181558947E-02"/>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.0545134181558947"/>
 												<Property Name="TrimBegin" Type="Real64" Value="0.179366730706492"/>
 											</PropertyList>
 											<Language>SFX</Language>
@@ -233,7 +233,7 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<Sound Name="Transform_ToKetsu_01" ID="{78C31A6E-7282-4FC4-90FE-7149AB016821}" ShortID="135304611" Type="SoundFX">
+								<Sound Name="Transform_ToKetsu_01" ID="{78C31A6E-7282-4FC4-90FE-7149AB016821}" ShortID="135304611">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -258,7 +258,7 @@
 										<ActiveSource Name="Transform_ToKetsu_01" ID="{FF693E9E-AACF-4729-95B4-4AF135909425}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="Transform_ToKetsu_02" ID="{C19B997B-0172-4AFB-9977-6B7F23C819C7}" ShortID="1060727200" Type="SoundFX">
+								<Sound Name="Transform_ToKetsu_02" ID="{C19B997B-0172-4AFB-9977-6B7F23C819C7}" ShortID="1060727200">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -283,7 +283,7 @@
 										<ActiveSource Name="Transform_ToKetsu_02" ID="{7D7FC067-B0B5-49BC-8343-E01A49163910}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="Transform_ToKetsu_03" ID="{F8932750-A4EF-4B3D-AC0A-E11395B13324}" ShortID="337109259" Type="SoundFX">
+								<Sound Name="Transform_ToKetsu_03" ID="{F8932750-A4EF-4B3D-AC0A-E11395B13324}" ShortID="337109259">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -336,7 +336,7 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<Sound Name="Transform_FromKetsu_01" ID="{F1D1B5A9-66FC-4E63-A254-A6B7271D22C6}" ShortID="319340171" Type="SoundFX">
+								<Sound Name="Transform_FromKetsu_01" ID="{F1D1B5A9-66FC-4E63-A254-A6B7271D22C6}" ShortID="319340171">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -348,7 +348,7 @@
 									<ChildrenList>
 										<AudioFileSource Name="Transform_FromKetsu_01" ID="{B6CDBD76-BD87-4BE9-95C1-DD07FD52986F}" ShortID="280944617">
 											<PropertyList>
-												<Property Name="FadeInDuration" Type="Real64" Value="4.27040111485684E-02"/>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.0427040111485684"/>
 												<Property Name="FadeOutDuration" Type="Real64" Value="0.262047341138942"/>
 												<Property Name="TrimBegin" Type="Real64" Value="0.130053124861549"/>
 												<Property Name="TrimEnd" Type="Real64" Value="1.82268483947753"/>
@@ -361,7 +361,7 @@
 										<ActiveSource Name="Transform_FromKetsu_01" ID="{B6CDBD76-BD87-4BE9-95C1-DD07FD52986F}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="Transform_FromKetsu_02" ID="{3421C7CC-64BE-4BB1-ABF0-BC8CD69670C8}" ShortID="177416438" Type="SoundFX">
+								<Sound Name="Transform_FromKetsu_02" ID="{3421C7CC-64BE-4BB1-ABF0-BC8CD69670C8}" ShortID="177416438">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -373,8 +373,8 @@
 									<ChildrenList>
 										<AudioFileSource Name="Transform_FromKetsu_02" ID="{257A4E63-4DE1-43E7-8CDF-ADCB6E24E616}" ShortID="378707394">
 											<PropertyList>
-												<Property Name="FadeInDuration" Type="Real64" Value="3.98871449112505E-02"/>
-												<Property Name="FadeOutDuration" Type="Real64" Value="9.79048102367057E-02"/>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.0398871449112505"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.0979048102367057"/>
 												<Property Name="TrimBegin" Type="Real64" Value="0.112409226568069"/>
 												<Property Name="TrimEnd" Type="Real64" Value="1.6118032648228"/>
 											</PropertyList>
@@ -386,7 +386,7 @@
 										<ActiveSource Name="Transform_FromKetsu_02" ID="{257A4E63-4DE1-43E7-8CDF-ADCB6E24E616}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="Transform_FromKetsu_03" ID="{E44FD5AB-0D04-4EE5-8243-29D13CE488E8}" ShortID="133489492" Type="SoundFX">
+								<Sound Name="Transform_FromKetsu_03" ID="{E44FD5AB-0D04-4EE5-8243-29D13CE488E8}" ShortID="133489492">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3D57C4F-EE53-48BC-8B1B-7CDC1E5692FD}"/>
@@ -398,9 +398,9 @@
 									<ChildrenList>
 										<AudioFileSource Name="Transform_FromKetsu_03" ID="{E5C21707-BDAB-452B-8A5E-5E787EFE92BC}" ShortID="333863694">
 											<PropertyList>
-												<Property Name="FadeInDuration" Type="Real64" Value="3.98883532098452E-02"/>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.0398883532098452"/>
 												<Property Name="FadeOutDuration" Type="Real64" Value="0.159553412839381"/>
-												<Property Name="TrimBegin" Type="Real64" Value="9.11733787653605E-02"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.0911733787653605"/>
 												<Property Name="TrimEnd" Type="Real64" Value="1.692405843332"/>
 											</PropertyList>
 											<Language>SFX</Language>
@@ -425,7 +425,7 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<Sound Name="SFX_Character_Blocked" ID="{08930220-7D57-45AD-8657-77F02CC39AAB}" ShortID="569454924" Type="SoundFX">
+						<Sound Name="SFX_Character_Blocked" ID="{08930220-7D57-45AD-8657-77F02CC39AAB}" ShortID="569454924">
 							<PropertyList>
 								<Property Name="Highpass" Type="int16">
 									<ValueList>
@@ -469,9 +469,9 @@
 							<ChildrenList>
 								<AudioFileSource Name="SFX_Character_Blocked" ID="{2B0EB531-A3EE-4139-BFB2-B77F9F19E407}" ShortID="532480567">
 									<PropertyList>
-										<Property Name="FadeInDuration" Type="Real64" Value="1.96345500900182E-02"/>
-										<Property Name="FadeOutDuration" Type="Real64" Value="6.24735684682399E-02"/>
-										<Property Name="TrimBegin" Type="Real64" Value="1.36846864263764E-02"/>
+										<Property Name="FadeInDuration" Type="Real64" Value="0.0196345500900182"/>
+										<Property Name="FadeOutDuration" Type="Real64" Value="0.0624735684682399"/>
+										<Property Name="TrimBegin" Type="Real64" Value="0.0136846864263764"/>
 										<Property Name="TrimEnd" Type="Real64" Value="0.414110510989476"/>
 									</PropertyList>
 									<Language>SFX</Language>
@@ -482,7 +482,7 @@
 								<ActiveSource Name="SFX_Character_Blocked" ID="{2B0EB531-A3EE-4139-BFB2-B77F9F19E407}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
-						<Sound Name="SFX_LevelStart" ID="{1966C171-9A57-4F37-948E-CBD131CE636F}" ShortID="1049354126" Type="SoundFX">
+						<Sound Name="SFX_LevelStart" ID="{1966C171-9A57-4F37-948E-CBD131CE636F}" ShortID="1049354126">
 							<PropertyList>
 								<Property Name="Highpass" Type="int16">
 									<ValueList>
@@ -513,7 +513,7 @@
 								<ActiveSource Name="SFX_LevelStart" ID="{58A24AFE-C750-4E88-BAF0-B0B5937DC513}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
-						<Sound Name="SFX_LevelSolved" ID="{A0DA2C90-4827-44C9-83DF-9A694E5108B7}" ShortID="242711899" Type="SoundFX">
+						<Sound Name="SFX_LevelSolved" ID="{A0DA2C90-4827-44C9-83DF-9A694E5108B7}" ShortID="242711899">
 							<PropertyList>
 								<Property Name="Pitch" Type="int32">
 									<ModifierList>
@@ -555,7 +555,7 @@
 								<ActiveSource Name="GUI_Split_Release" ID="{ED3FD378-0570-4AD1-82B3-03D0FA389228}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
-						<Sound Name="SFX_Ketsu_BuildUp" ID="{34295A4A-6C83-4BB1-B048-EE32BD894243}" ShortID="710223340" Type="SoundFX">
+						<Sound Name="SFX_Ketsu_BuildUp" ID="{34295A4A-6C83-4BB1-B048-EE32BD894243}" ShortID="710223340">
 							<PropertyList>
 								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 								<Property Name="Lowpass" Type="int16">
@@ -603,7 +603,7 @@
 								<ActiveSource Name="GUI_Split_BuildUp" ID="{A1863788-4AF8-4CF7-93EC-CD2751C9E4E6}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
-						<Sound Name="Ketsu_Explosion" ID="{F4022B6F-19A2-489D-AA45-C234E1D856CB}" ShortID="157560143" Type="SoundFX">
+						<Sound Name="Ketsu_Explosion" ID="{F4022B6F-19A2-489D-AA45-C234E1D856CB}" ShortID="157560143">
 							<PropertyList>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
@@ -629,7 +629,7 @@
 								<ActiveSource Name="Ketsu_Explosion" ID="{61EDB079-BD78-4CEE-9E7D-FED42DDB613E}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
-						<Sound Name="Ketsu_Extermination" ID="{061C80B2-BFAC-47EB-9050-3CA510637A66}" ShortID="665681366" Type="SoundFX">
+						<Sound Name="Ketsu_Extermination" ID="{061C80B2-BFAC-47EB-9050-3CA510637A66}" ShortID="665681366">
 							<PropertyList>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>

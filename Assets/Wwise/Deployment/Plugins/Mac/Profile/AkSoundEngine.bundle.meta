@@ -1,31 +1,43 @@
 fileFormatVersion: 2
 guid: 4d803bac0e210904c84c79a449391e10
 folderAsset: yes
-timeCreated: 1485704457
-licenseType: Free
 PluginImporter:
-  serializedVersion: 1
+  externalObjects: {}
+  serializedVersion: 2
   iconMap: {}
   executionOrder: {}
   isPreloaded: 0
   isOverridable: 0
   platformData:
-    Any:
+  - first:
+      '': OSXIntel
+    second:
+      enabled: 1
+      settings: {}
+  - first:
+      '': OSXIntel64
+    second:
+      enabled: 1
+      settings: {}
+  - first:
+      Any: 
+    second:
       enabled: 0
       settings: {}
-    Editor:
+  - first:
+      Editor: Editor
+    second:
       enabled: 1
       settings:
+        CPU: AnyCPU
         DefaultValueInitialized: true
-    OSXIntel:
+        OS: OSX
+  - first:
+      Standalone: OSXUniversal
+    second:
       enabled: 1
-      settings: {}
-    OSXIntel64:
-      enabled: 1
-      settings: {}
-    OSXUniversal:
-      enabled: 1
-      settings: {}
+      settings:
+        CPU: 
   userData: 
   assetBundleName: 
   assetBundleVariant: 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{C489545F-5A31-4916-ADCB-890D56845F59}" SchemaVersion="75">
+<WwiseDocument Type="WorkUnit" ID="{C489545F-5A31-4916-ADCB-890D56845F59}" SchemaVersion="85">
 	<Events>
 		<WorkUnit Name="Music" ID="{C489545F-5A31-4916-ADCB-890D56845F59}" PersistMode="Standalone">
 			<ChildrenList>
@@ -7,163 +7,190 @@
 					<ChildrenList>
 						<Event Name="Play_InGameMusic3" ID="{35E60518-6849-4E77-ABE9-0533248BB64B}">
 							<ChildrenList>
-								<Action Name="Play" ID="{EAE115DA-118A-4CAC-8311-638727B84407}" ShortID="945443224" Type="Play" Scope="One" Global="false">
+								<Action Name="" ID="{EAE115DA-118A-4CAC-8311-638727B84407}" ShortID="945443224">
 									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="1"/>
 										<Property Name="FadeTime" Type="Real64" Value="0.5"/>
 									</PropertyList>
-									<ElementList>
-										<Element ID="{B9D3579F-FF7C-4E1E-B30B-7DD4A70AE729}" Global="false">
+									<ReferenceList>
+										<Reference Name="Target">
 											<ObjectRef Name="LevelMusic_Hedgy_Short" ID="{EA2045A2-B626-45B0-9792-E1DD013A772A}" WorkUnitID="{10797219-A9C7-4EA5-B09A-EF88C7225BB7}"/>
-										</Element>
-									</ElementList>
+										</Reference>
+									</ReferenceList>
 								</Action>
-								<Action Name="Stop" ID="{BACFE66B-AB1D-4CF4-989F-90AA1AF8813C}" ShortID="54913666" Type="Stop" Scope="One" Global="true">
+								<Action Name="" ID="{BACFE66B-AB1D-4CF4-989F-90AA1AF8813C}" ShortID="54913666">
 									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
 										<Property Name="FadeTime" Type="Real64" Value="1"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
 									</PropertyList>
-									<ElementList>
-										<Element ID="{5B7D729F-F53D-42D6-AE4B-FACED6D71742}" Global="true">
+									<ReferenceList>
+										<Reference Name="Target">
 											<ObjectRef Name="LevelMusic_Peaceful_Short" ID="{3346DB21-6EEC-43D2-8B57-7E5AA8613F20}" WorkUnitID="{10797219-A9C7-4EA5-B09A-EF88C7225BB7}"/>
-										</Element>
-									</ElementList>
+										</Reference>
+									</ReferenceList>
 								</Action>
-								<Action Name="Stop" ID="{14A19E8C-663C-4A64-9138-39F404A07AEA}" ShortID="690208057" Type="Stop" Scope="One" Global="true">
+								<Action Name="" ID="{14A19E8C-663C-4A64-9138-39F404A07AEA}" ShortID="690208057">
 									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
 										<Property Name="FadeTime" Type="Real64" Value="1"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
 									</PropertyList>
-									<ElementList>
-										<Element ID="{1DDEE35D-63C5-4A60-AC99-5A0D79723527}" Global="true">
+									<ReferenceList>
+										<Reference Name="Target">
 											<ObjectRef Name="Ketsu_MenuMusic_Ambient" ID="{BF4C753E-4F83-496F-8CEC-BE14FB735C69}" WorkUnitID="{10797219-A9C7-4EA5-B09A-EF88C7225BB7}"/>
-										</Element>
-									</ElementList>
+										</Reference>
+									</ReferenceList>
 								</Action>
-								<Action Name="Stop" ID="{D2AF3BE0-87CA-4A70-862B-E2E791C92C6D}" ShortID="501798211" Type="Stop" Scope="One" Global="true">
+								<Action Name="" ID="{D2AF3BE0-87CA-4A70-862B-E2E791C92C6D}" ShortID="501798211">
 									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
 										<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
 									</PropertyList>
-									<ElementList>
-										<Element ID="{478668ED-01FD-49FD-A250-9D410CE60816}" Global="true">
+									<ReferenceList>
+										<Reference Name="Target">
 											<ObjectRef Name="UI_Spacehip_Idle_01" ID="{4783B7BE-919E-4355-B43B-400E78469585}" WorkUnitID="{31E82EE3-46D8-44FD-B484-8AC77E38A15B}"/>
-										</Element>
-									</ElementList>
+										</Reference>
+									</ReferenceList>
 								</Action>
-								<Action Name="Stop" ID="{E86E8F29-F24A-49E4-B1AA-215DBBC46643}" ShortID="35159000" Type="Stop" Scope="One" Global="true">
+								<Action Name="" ID="{E86E8F29-F24A-49E4-B1AA-215DBBC46643}" ShortID="35159000">
 									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
 										<Property Name="FadeTime" Type="Real64" Value="1"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
 									</PropertyList>
-									<ElementList>
-										<Element ID="{A769A7A9-64F2-413A-BA74-DE706B588421}" Global="true">
+									<ReferenceList>
+										<Reference Name="Target">
 											<ObjectRef Name="LevelMusic_Peaceful2" ID="{820A4689-6BE1-479F-B64A-D8EDD8BD8C44}" WorkUnitID="{10797219-A9C7-4EA5-B09A-EF88C7225BB7}"/>
-										</Element>
-									</ElementList>
+										</Reference>
+									</ReferenceList>
 								</Action>
 							</ChildrenList>
 						</Event>
 						<Event Name="Play_InGameMusic1" ID="{A0AF6BF0-D7C5-478E-8722-7985DB6FB0BD}">
 							<ChildrenList>
-								<Action Name="Play" ID="{73D8E874-9A05-4C46-9D1C-1A40F1F93EEA}" ShortID="480878298" Type="Play" Scope="One" Global="false">
+								<Action Name="" ID="{73D8E874-9A05-4C46-9D1C-1A40F1F93EEA}" ShortID="480878298">
 									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="1"/>
 										<Property Name="FadeTime" Type="Real64" Value="0.5"/>
 									</PropertyList>
-									<ElementList>
-										<Element ID="{01D30223-321C-4A69-AE63-0F211B3015FF}" Global="false">
+									<ReferenceList>
+										<Reference Name="Target">
 											<ObjectRef Name="LevelMusic_Peaceful_Short" ID="{3346DB21-6EEC-43D2-8B57-7E5AA8613F20}" WorkUnitID="{10797219-A9C7-4EA5-B09A-EF88C7225BB7}"/>
-										</Element>
-									</ElementList>
+										</Reference>
+									</ReferenceList>
 								</Action>
-								<Action Name="Stop" ID="{B95D9E9C-87E0-454A-825D-893B67E4BD3C}" ShortID="926154977" Type="Stop" Scope="One" Global="true">
+								<Action Name="" ID="{B95D9E9C-87E0-454A-825D-893B67E4BD3C}" ShortID="926154977">
 									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
 										<Property Name="FadeTime" Type="Real64" Value="1"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
 									</PropertyList>
-									<ElementList>
-										<Element ID="{A6190426-4163-461E-AAF4-AC34A350B0D7}" Global="true">
+									<ReferenceList>
+										<Reference Name="Target">
 											<ObjectRef Name="Ketsu_MenuMusic_Ambient" ID="{BF4C753E-4F83-496F-8CEC-BE14FB735C69}" WorkUnitID="{10797219-A9C7-4EA5-B09A-EF88C7225BB7}"/>
-										</Element>
-									</ElementList>
+										</Reference>
+									</ReferenceList>
 								</Action>
-								<Action Name="Stop" ID="{209994A8-1B22-4063-AE02-FBBC3C14EB7A}" ShortID="935814416" Type="Stop" Scope="One" Global="true">
+								<Action Name="" ID="{209994A8-1B22-4063-AE02-FBBC3C14EB7A}" ShortID="935814416">
 									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
 										<Property Name="FadeTime" Type="Real64" Value="1"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
 									</PropertyList>
-									<ElementList>
-										<Element ID="{D5F78AAE-AF02-4685-B60F-6D06CC4E3511}" Global="true">
+									<ReferenceList>
+										<Reference Name="Target">
 											<ObjectRef Name="LevelMusic_Hedgy_Short" ID="{EA2045A2-B626-45B0-9792-E1DD013A772A}" WorkUnitID="{10797219-A9C7-4EA5-B09A-EF88C7225BB7}"/>
-										</Element>
-									</ElementList>
+										</Reference>
+									</ReferenceList>
 								</Action>
-								<Action Name="Stop" ID="{8CC7C9E0-E87F-4F2E-A39D-F440848F777C}" ShortID="840917667" Type="Stop" Scope="One" Global="true">
+								<Action Name="" ID="{8CC7C9E0-E87F-4F2E-A39D-F440848F777C}" ShortID="840917667">
 									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
 										<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
 									</PropertyList>
-									<ElementList>
-										<Element ID="{3D010D8D-C4BF-46A0-8026-823C0DC02509}" Global="true">
+									<ReferenceList>
+										<Reference Name="Target">
 											<ObjectRef Name="UI_Spacehip_Idle_01" ID="{4783B7BE-919E-4355-B43B-400E78469585}" WorkUnitID="{31E82EE3-46D8-44FD-B484-8AC77E38A15B}"/>
-										</Element>
-									</ElementList>
+										</Reference>
+									</ReferenceList>
 								</Action>
-								<Action Name="Stop" ID="{3EA12137-B906-48E3-978A-DF8CA5E27F7C}" ShortID="355489394" Type="Stop" Scope="One" Global="true">
+								<Action Name="" ID="{3EA12137-B906-48E3-978A-DF8CA5E27F7C}" ShortID="355489394">
 									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
 										<Property Name="FadeTime" Type="Real64" Value="1"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
 									</PropertyList>
-									<ElementList>
-										<Element ID="{5CEC5955-3B26-4DC4-B216-B96A173C27AB}" Global="true">
+									<ReferenceList>
+										<Reference Name="Target">
 											<ObjectRef Name="LevelMusic_Peaceful2" ID="{820A4689-6BE1-479F-B64A-D8EDD8BD8C44}" WorkUnitID="{10797219-A9C7-4EA5-B09A-EF88C7225BB7}"/>
-										</Element>
-									</ElementList>
+										</Reference>
+									</ReferenceList>
 								</Action>
 							</ChildrenList>
 						</Event>
 						<Event Name="Play_InGameMusic2" ID="{4F50316C-B2E1-4EF7-AC87-D4DA92DC7843}">
 							<ChildrenList>
-								<Action Name="Play" ID="{732D5639-F583-4F00-AF94-3785E1D1E602}" ShortID="181205684" Type="Play" Scope="One" Global="false">
+								<Action Name="" ID="{732D5639-F583-4F00-AF94-3785E1D1E602}" ShortID="181205684">
 									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="1"/>
 										<Property Name="FadeTime" Type="Real64" Value="0.5"/>
 									</PropertyList>
-									<ElementList>
-										<Element ID="{C8A52783-8342-4E98-AAD1-068E3238E642}" Global="false">
+									<ReferenceList>
+										<Reference Name="Target">
 											<ObjectRef Name="LevelMusic_Peaceful2" ID="{820A4689-6BE1-479F-B64A-D8EDD8BD8C44}" WorkUnitID="{10797219-A9C7-4EA5-B09A-EF88C7225BB7}"/>
-										</Element>
-									</ElementList>
+										</Reference>
+									</ReferenceList>
 								</Action>
-								<Action Name="Stop" ID="{950A4CBC-6A4C-401B-983A-339E6EB58DBA}" ShortID="1047383631" Type="Stop" Scope="One" Global="true">
+								<Action Name="" ID="{950A4CBC-6A4C-401B-983A-339E6EB58DBA}" ShortID="1047383631">
 									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
 										<Property Name="FadeTime" Type="Real64" Value="1"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
 									</PropertyList>
-									<ElementList>
-										<Element ID="{52430D4B-AA5E-4111-AD0F-35475A18414E}" Global="true">
+									<ReferenceList>
+										<Reference Name="Target">
 											<ObjectRef Name="LevelMusic_Peaceful_Short" ID="{3346DB21-6EEC-43D2-8B57-7E5AA8613F20}" WorkUnitID="{10797219-A9C7-4EA5-B09A-EF88C7225BB7}"/>
-										</Element>
-									</ElementList>
+										</Reference>
+									</ReferenceList>
 								</Action>
-								<Action Name="Stop" ID="{AEA3A3A9-3FB5-4B13-B3EE-729A9197A054}" ShortID="741457947" Type="Stop" Scope="One" Global="true">
+								<Action Name="" ID="{AEA3A3A9-3FB5-4B13-B3EE-729A9197A054}" ShortID="741457947">
 									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
 										<Property Name="FadeTime" Type="Real64" Value="1"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
 									</PropertyList>
-									<ElementList>
-										<Element ID="{B0F2D70B-3877-44B2-BA71-F2A15EEC3A3C}" Global="true">
+									<ReferenceList>
+										<Reference Name="Target">
 											<ObjectRef Name="LevelMusic_Hedgy_Short" ID="{EA2045A2-B626-45B0-9792-E1DD013A772A}" WorkUnitID="{10797219-A9C7-4EA5-B09A-EF88C7225BB7}"/>
-										</Element>
-									</ElementList>
+										</Reference>
+									</ReferenceList>
 								</Action>
-								<Action Name="Stop" ID="{55177D45-43BB-4109-9E9F-0A6B4D4E8CF3}" ShortID="164486412" Type="Stop" Scope="One" Global="true">
+								<Action Name="" ID="{55177D45-43BB-4109-9E9F-0A6B4D4E8CF3}" ShortID="164486412">
 									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
 										<Property Name="FadeTime" Type="Real64" Value="1"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
 									</PropertyList>
-									<ElementList>
-										<Element ID="{A5ECF404-E8DD-4E68-81B6-B3876906D6D4}" Global="true">
+									<ReferenceList>
+										<Reference Name="Target">
 											<ObjectRef Name="Ketsu_MenuMusic_Ambient" ID="{BF4C753E-4F83-496F-8CEC-BE14FB735C69}" WorkUnitID="{10797219-A9C7-4EA5-B09A-EF88C7225BB7}"/>
-										</Element>
-									</ElementList>
+										</Reference>
+									</ReferenceList>
 								</Action>
-								<Action Name="Stop" ID="{36BD082D-CDE8-41AC-8288-37ECD67109F4}" ShortID="208026334" Type="Stop" Scope="One" Global="true">
+								<Action Name="" ID="{36BD082D-CDE8-41AC-8288-37ECD67109F4}" ShortID="208026334">
 									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
 										<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
 									</PropertyList>
-									<ElementList>
-										<Element ID="{CD5EC259-AF24-49F8-B982-49059CDDC2E9}" Global="true">
+									<ReferenceList>
+										<Reference Name="Target">
 											<ObjectRef Name="UI_Spacehip_Idle_01" ID="{4783B7BE-919E-4355-B43B-400E78469585}" WorkUnitID="{31E82EE3-46D8-44FD-B484-8AC77E38A15B}"/>
-										</Element>
-									</ElementList>
+										</Reference>
+									</ReferenceList>
 								</Action>
 							</ChildrenList>
 						</Event>
@@ -173,12 +200,15 @@
 					<ChildrenList>
 						<Event Name="Level_Solved" ID="{F00C3B8C-BB68-4E4D-B8D3-B683C7BFB6C5}">
 							<ChildrenList>
-								<Action Name="Play" ID="{5D968311-2C6D-4E8D-8E6A-663ED2C61BEB}" ShortID="1031530262" Type="Play" Scope="One" Global="false">
-									<ElementList>
-										<Element ID="{ACB287B7-3DE1-4EC2-96DB-63220527EE56}" Global="false">
+								<Action Name="" ID="{5D968311-2C6D-4E8D-8E6A-663ED2C61BEB}" ShortID="1031530262">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
 											<ObjectRef Name="SFX_LevelSolved" ID="{A0DA2C90-4827-44C9-83DF-9A694E5108B7}" WorkUnitID="{4AB0081F-95CC-4563-9E37-C5B4336B598F}"/>
-										</Element>
-									</ElementList>
+										</Reference>
+									</ReferenceList>
 								</Action>
 							</ChildrenList>
 						</Event>
@@ -188,25 +218,33 @@
 					<ChildrenList>
 						<Event Name="Play_MenuMusic" ID="{45E2DF70-060B-4745-996A-3437EAD1AA29}">
 							<ChildrenList>
-								<Action Name="Play" ID="{399900D9-45AD-4D6F-983E-DB1C199CE9A8}" ShortID="615157" Type="Play" Scope="One" Global="false">
+								<Action Name="" ID="{399900D9-45AD-4D6F-983E-DB1C199CE9A8}" ShortID="615157">
 									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="1"/>
 										<Property Name="FadeTime" Type="Real64" Value="0.5"/>
 									</PropertyList>
-									<ElementList>
-										<Element ID="{36D1CA3B-1BCD-474F-9917-E2ED44875E9C}" Global="false">
+									<ReferenceList>
+										<Reference Name="Target">
 											<ObjectRef Name="Ketsu_MenuMusic_Ambient" ID="{BF4C753E-4F83-496F-8CEC-BE14FB735C69}" WorkUnitID="{10797219-A9C7-4EA5-B09A-EF88C7225BB7}"/>
-										</Element>
-									</ElementList>
+										</Reference>
+									</ReferenceList>
 								</Action>
-								<Action Name="Stop All Except" ID="{0DC37A65-E9E7-4117-9666-06C894E752AE}" ShortID="948689442" Type="Stop" Scope="AllExcept" Global="true">
+								<Action Name="" ID="{0DC37A65-E9E7-4117-9666-06C894E752AE}" ShortID="948689442">
 									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="3"/>
 										<Property Name="FadeTime" Type="Real64" Value="1"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
 									</PropertyList>
-									<ElementList>
-										<Element ID="{51604A82-466A-4A95-A9D6-3F76392E6F80}" Global="true">
-											<ObjectRef Name="Ketsu_MenuMusic_Ambient" ID="{BF4C753E-4F83-496F-8CEC-BE14FB735C69}" WorkUnitID="{10797219-A9C7-4EA5-B09A-EF88C7225BB7}"/>
-										</Element>
-									</ElementList>
+									<ReferenceList/>
+									<ChildrenList>
+										<EventActionException Name="" ID="{7749AC92-13A0-4DDE-9C22-2F3AFD7FC648}">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Ketsu_MenuMusic_Ambient" ID="{BF4C753E-4F83-496F-8CEC-BE14FB735C69}" WorkUnitID="{10797219-A9C7-4EA5-B09A-EF88C7225BB7}"/>
+												</Reference>
+											</ReferenceList>
+										</EventActionException>
+									</ChildrenList>
 								</Action>
 							</ChildrenList>
 						</Event>

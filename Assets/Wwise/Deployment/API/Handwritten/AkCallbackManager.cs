@@ -1,797 +1,434 @@
-#if ! (UNITY_DASHBOARD_WIDGET || UNITY_WEBPLAYER || UNITY_WII || UNITY_NACL || UNITY_FLASH || UNITY_BLACKBERRY) // Disable under unsupported platforms.
+#if ! (UNITY_DASHBOARD_WIDGET || UNITY_WEBPLAYER || UNITY_WII || UNITY_WIIU || UNITY_NACL || UNITY_FLASH || UNITY_BLACKBERRY) // Disable under unsupported platforms.
 //////////////////////////////////////////////////////////////////////
 //
 // Copyright (c) 2012 Audiokinetic Inc. / All Rights Reserved
 //
 //////////////////////////////////////////////////////////////////////
 
-using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using UnityEngine;
-using System.IO;
-
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
-
-#pragma warning disable 0618 // Marshal.SizeOf() => Marshal.SizeOf<T>() (.NET 4.5.1)
-
-/// This class manages the callback queue.  All callbacks from the native Wwise SDK go through this queue.  
-/// The queue needs to be driven by regular calls to PostCallbacks().  This is currently done in AkInitializer.cs, in LateUpdate().
-static public class AkCallbackManager
+/// <summary>
+///     This class manages the callback queue.  All callbacks from the native Wwise SDK go through this queue.
+///     The queue needs to be driven by regular calls to PostCallbacks().  This is currently done in AkInitializer.cs, in
+///     LateUpdate().
+/// </summary>
+public static class AkCallbackManager
 {
-    public delegate void EventCallback(object in_cookie, AkCallbackType in_type, object in_info);
-    public delegate void MonitoringCallback(ErrorCode in_errorCode, ErrorLevel in_errorLevel, uint in_playingID, IntPtr in_gameObjID, string in_msg);
-    public delegate void BankCallback(uint in_bankID, IntPtr in_InMemoryBankPtr, AKRESULT in_eLoadResult, uint in_memPoolId, object in_Cookie);
+	/// <summary>
+	/// Event callback used when posting events.
+	/// </summary>
+	public delegate void EventCallback(object in_cookie, AkCallbackType in_type, AkCallbackInfo in_info);
 
-    public class EventCallbackPackage
-    {
-        public static EventCallbackPackage Create(EventCallback in_cb, object in_cookie, ref uint io_Flags)
-        {
-            if (io_Flags == 0 || in_cb == null)
+	/// <summary>
+	/// Monitoring callback called when Wwise reports errors.
+	/// </summary>
+	public delegate void MonitoringCallback(AkMonitorErrorCode in_errorCode, AkMonitorErrorLevel in_errorLevel,
+		uint in_playingID, ulong in_gameObjID, string in_msg);
+
+	/// <summary>
+	/// Bank callback called upon bank load and unload and when errors occur.
+	/// </summary>
+	public delegate void BankCallback(uint in_bankID, System.IntPtr in_InMemoryBankPtr, AKRESULT in_eLoadResult,
+		uint in_memPoolId, object in_Cookie);
+
+	private static readonly AkEventCallbackInfo AkEventCallbackInfo = new AkEventCallbackInfo(System.IntPtr.Zero, false);
+
+	private static readonly AkDynamicSequenceItemCallbackInfo AkDynamicSequenceItemCallbackInfo =
+		new AkDynamicSequenceItemCallbackInfo(System.IntPtr.Zero, false);
+
+	private static readonly AkMIDIEventCallbackInfo AkMIDIEventCallbackInfo =
+		new AkMIDIEventCallbackInfo(System.IntPtr.Zero, false);
+
+	private static readonly AkMarkerCallbackInfo
+		AkMarkerCallbackInfo = new AkMarkerCallbackInfo(System.IntPtr.Zero, false);
+
+	private static readonly AkDurationCallbackInfo AkDurationCallbackInfo =
+		new AkDurationCallbackInfo(System.IntPtr.Zero, false);
+
+	private static readonly AkMusicSyncCallbackInfo AkMusicSyncCallbackInfo =
+		new AkMusicSyncCallbackInfo(System.IntPtr.Zero, false);
+
+	private static readonly AkMusicPlaylistCallbackInfo AkMusicPlaylistCallbackInfo =
+		new AkMusicPlaylistCallbackInfo(System.IntPtr.Zero, false);
+
+#if UNITY_IOS && !UNITY_EDITOR
+	private static AkAudioInterruptionCallbackInfo AkAudioInterruptionCallbackInfo =
+		new AkAudioInterruptionCallbackInfo(System.IntPtr.Zero, false);
+#endif // #if UNITY_IOS && ! UNITY_EDITOR
+
+	private static readonly AkAudioSourceChangeCallbackInfo AkAudioSourceChangeCallbackInfo =
+		new AkAudioSourceChangeCallbackInfo(System.IntPtr.Zero, false);
+
+	private static readonly AkMonitoringCallbackInfo AkMonitoringCallbackInfo =
+		new AkMonitoringCallbackInfo(System.IntPtr.Zero, false);
+
+	private static readonly AkBankCallbackInfo AkBankCallbackInfo = new AkBankCallbackInfo(System.IntPtr.Zero, false);
+
+	/// <summary>
+	/// This class holds the data associated with an event callback.
+	/// </summary>
+	public class EventCallbackPackage
+	{
+		public bool m_bNotifyEndOfEvent;
+		public EventCallback m_Callback;
+
+		public object m_Cookie;
+		public uint m_playingID;
+
+		public static EventCallbackPackage Create(EventCallback in_cb, object in_cookie, ref uint io_Flags)
+		{
+			if (io_Flags == 0 || in_cb == null)
 			{
 				io_Flags = 0;
-                return null;
+				return null;
 			}
 
-            EventCallbackPackage evt = new EventCallbackPackage();
+			var evt = new EventCallbackPackage();
 
-            evt.m_Callback = in_cb;
-            evt.m_Cookie = in_cookie;
-            evt.m_bNotifyEndOfEvent = (io_Flags & (uint)AkCallbackType.AK_EndOfEvent) != 0;
-            io_Flags = io_Flags | (uint)AkCallbackType.AK_EndOfEvent;
+			evt.m_Callback = in_cb;
+			evt.m_Cookie = in_cookie;
+			evt.m_bNotifyEndOfEvent = (io_Flags & (uint) AkCallbackType.AK_EndOfEvent) != 0;
+			io_Flags = io_Flags | (uint) AkCallbackType.AK_EndOfEvent;
 
-            m_mapEventCallbacks[evt.GetHashCode()] = evt;
-            m_LastAddedEventPackage = evt;
+			m_mapEventCallbacks[evt.GetHashCode()] = evt;
+			m_LastAddedEventPackage = evt;
 
-            return evt;
-        }
-       
-        public object m_Cookie;
-        public EventCallback m_Callback;
-        public bool m_bNotifyEndOfEvent;
-        public uint m_playingID = 0;
-    };
+			return evt;
+		}
 
-    public class BankCallbackPackage
-    {
-        public BankCallbackPackage(BankCallback in_cb, object in_cookie)
-        {
-            m_Callback = in_cb;
-            m_Cookie = in_cookie;
+		~EventCallbackPackage()
+		{
+			if (m_Cookie != null)
+				RemoveEventCallbackCookie(m_Cookie);
+		}
+	}
 
-            m_mapBankCallbacks[GetHashCode()] = this;
-        }
-        public object m_Cookie;
-        public BankCallback m_Callback;
-    };
-
-    [StructLayout(LayoutKind.Sequential, Pack=4)]
-    struct AkCommonCallback
-    {
-        public IntPtr pPackage;     //The C# CallbackPackage to return to C#
-        public IntPtr pNext;        //The next callback
-        public AkCallbackType eType;    //The type of structure following
-    };
-    
-	/// End-of-event callback data.  Received at the end of an event.
-	/// \sa Ak::SoundEngine::PostEvent
-	public struct AkEventCallbackInfo
-    {
-        public IntPtr pCookie;      ///< User data, passed to PostEvent()
-        public IntPtr gameObjID;    ///< Game object ID
-        public uint playingID;      ///< Playing ID of Event, returned by PostEvent()
-        public uint eventID;        ///< Unique ID of Event, passed to PostEvent()
-    }
-    
-	/// Dynamic sequence callback data.  
-	/// \sa AK::SoundEngine::DynamicSequence::Open()
-    public struct AkDynamicSequenceItemCallbackInfo
-    {
-        public IntPtr pCookie;      ///< User data, passed to Open()
-        public IntPtr gameObjID;    ///< Game object ID
-        public uint playingID;      ///< Playing ID of Event, returned by Open()
-        public uint audioNodeID;    ///< Audio Node ID of finished item
-        public IntPtr pCustomInfo;  ///< Custom info passed to the DynamicSequence::Open function
-    };
-	    
-	/// Midi event callback data.  
-	public struct AkMidiEventCallbackInfo
+	/// <summary>
+	/// This class holds the data associated with a bank load or unload callback.
+	/// </summary>
+	public class BankCallbackPackage
 	{
-        public IntPtr pCookie;      ///< User data, passed to PostEvent()
-        public IntPtr gameObjID;    ///< Game object ID
-        public uint playingID;      ///< Playing ID of Event, returned by PostEvent()
-        public uint eventID;        ///< Unique ID of Event, passed to PostEvent()
-		
-		public byte byType;			// (Ak_MIDI_EVENT_TYPE_)
-		public byte byChan;
-		
-		// tGen members
-		public byte byParam1;
-		public byte byParam2;
-		
-		// tNoteOnOff members
-		public byte byOnOffNote;
-		public byte byVelocity;
-		
-		// tCc members
-		public byte byCc;
-		public byte byCcValue;
-		
-		// tPitchBend members
-		public byte byValueLsb;
-		public byte byValueMsb;
-		
-		// tNoteAftertouch members
-		public byte byAftertouchNote;
-		public byte byNoteAftertouchValue;
-		
-		// tChanAftertouch members
-		public byte byChanAftertouchValue;
-		
-		// tProgramChange members
-		public byte byProgramNum;
-	};
-    
-	/// Marker callback data, received when a marker is reached in the playing sound.
-	/// \sa soundengine_markers_howto
-    public struct AkMarkerCallbackInfo
-    {
-        public IntPtr pCookie;      ///< User data, passed to PostEvent()
-        public IntPtr gameObjID;    ///< Game object ID
-        public uint playingID;      ///< Playing ID of Event, returned by PostEvent()
-        public uint eventID;        ///< Unique ID of Event, passed to PostEvent()
-        public uint uIdentifier;        ///< Cue point identifier
-        public uint uPosition;          ///< Position in the cue point (unit: sample frames)        
-        //[MarshalAs(UnmanagedType.LPStr)] TODO, figure out why strings aren't marshaled properly
-        public string strLabel;         ///< Label of the marker, read from the file
-    };
-    
-	/// Duration callback data, recieved at the begining of an event.
-	/// \sa Ak::SoundEngine::PostEvent
-    public struct AkDurationCallbackInfo
-    {
-        public IntPtr pCookie;      ///< User data, passed to PostEvent()
-        public IntPtr gameObjID;    ///< Game object ID
-        public uint playingID;      ///< Playing ID of Event, returned by PostEvent()
-        public uint eventID;        ///< Unique ID of Event, passed to PostEvent()
-        public float fDuration;             ///< Duration of the sound (unit: milliseconds )
-        public float fEstimatedDuration;    ///< Estimated duration of the sound depending on source settings such as pitch. (unit: milliseconds )
-        public uint audioNodeID;            ///< Audio Node ID of playing item
-        public uint mediaID;				///< Media ID of playing item. (corresponds to 'ID' attribute of 'File' element in SoundBank metadata file)
-        public bool bStreaming;				///< True if source is streaming, false otherwise.
-    };
-    
-	/// Music callback data
-	/// \sa soundengine_music_callbacks_howto
-    public class AkMusicSyncCallbackInfoBase
-    {
-        public IntPtr pCookie;      ///< User data, passed to PostEvent()
-        public IntPtr gameObjID;    ///< Game object ID
-        public uint playingID;          ///< Playing ID of Event, returned by PostEvent()
-		public AkSegmentInfo segmentInfo = new AkSegmentInfo();		///< Segment information corresponding to the segment triggering this callback.
-        public AkCallbackType musicSyncType;    ///< Would be either AK_MusicSyncEntry, AK_MusicSyncBeat, AK_MusicSyncBar, AK_MusicSyncExit, AK_MusicSyncGrid, AK_MusicSyncPoint or AK_MusicSyncUserCue.
-    }
+		public BankCallback m_Callback;
+		public object m_Cookie;
 
-	/// Music callback data
-	/// \sa soundengine_music_callbacks_howto
-    public class AkMusicSyncCallbackInfo : AkMusicSyncCallbackInfoBase
-    {
-        public string pszUserCueName;       ///< Cue name
-    };
+		public BankCallbackPackage(BankCallback in_cb, object in_cookie)
+		{
+			m_Callback = in_cb;
+			m_Cookie = in_cookie;
 
-	/// Monitoring callback.  Received when the sound engine wants to report a warning or an error.
-	/// \sa AkCallbackManager.SetMonitoringCallback
-    public struct AkMonitoringMsg
-    {
-        public ErrorCode errorCode;
-        public ErrorLevel errorLevel;
-        public uint playingID;
-        public IntPtr gameObjID;
-        //[MarshalAs(UnmanagedType.LPWStr)] TODO, figure out why strings aren't marshaled properly
-        public string msg;
-    }
+			m_mapBankCallbacks[GetHashCode()] = this;
+		}
+	}
 
-	/// Bank callback data.  Received when a bank loads or unloads asynchronously.
-	/// \sa Ak::SoundEngine::LoadBank
-    public struct AkBankInfo
-    {
-        public uint bankID;
-        public IntPtr inMemoryBankPtr;
-        public AKRESULT eLoadResult;
-        public uint memPoolId;
-    }
+	private static readonly System.Collections.Generic.Dictionary<int, EventCallbackPackage> m_mapEventCallbacks =
+		new System.Collections.Generic.Dictionary<int, EventCallbackPackage>();
 
-    static Dictionary<int, EventCallbackPackage> m_mapEventCallbacks = new Dictionary<int, EventCallbackPackage>();
-    static Dictionary<int, BankCallbackPackage> m_mapBankCallbacks = new Dictionary<int, BankCallbackPackage>();
+	private static readonly System.Collections.Generic.Dictionary<int, BankCallbackPackage> m_mapBankCallbacks =
+		new System.Collections.Generic.Dictionary<int, BankCallbackPackage>();
 
-    static EventCallbackPackage m_LastAddedEventPackage = null;
+	private static EventCallbackPackage m_LastAddedEventPackage;
 
-    static public void RemoveEventCallback(uint in_playingID)
-    {
-        foreach (KeyValuePair<int, EventCallbackPackage> pair in m_mapEventCallbacks)
-        {
-            if (pair.Value.m_playingID == in_playingID)
-            {
-                m_mapEventCallbacks.Remove(pair.Key);
-                return;
-            }
-        }
-    }
+	public static void RemoveEventCallback(uint in_playingID)
+	{
+		var cookiesToRemove = new System.Collections.Generic.List<int>();
+		foreach (var pair in m_mapEventCallbacks)
+		{
+			if (pair.Value.m_playingID == in_playingID)
+			{
+				cookiesToRemove.Add(pair.Key);
+				break;
+			}
+		}
 
-    static public List<int> RemoveEventCallbackCookie(object in_cookie)
-    {
-        List<int> cookiesToRemove = new List<int>();
-        foreach (KeyValuePair<int, EventCallbackPackage> pair in m_mapEventCallbacks)
-        {
-            if (pair.Value.m_Cookie == in_cookie)
-            {
-                cookiesToRemove.Add(pair.Key);
-            }
-        }
+		var Count = cookiesToRemove.Count;
+		for (var ii = 0; ii < Count; ++ii)
+			m_mapEventCallbacks.Remove(cookiesToRemove[ii]);
 
-        foreach (int toRemove in cookiesToRemove)
-        {
-            m_mapEventCallbacks.Remove(toRemove);
-        }
+		AkSoundEnginePINVOKE.CSharp_CancelEventCallback(in_playingID);
+	}
 
-        return cookiesToRemove;
-    }
+	public static void RemoveEventCallbackCookie(object in_cookie)
+	{
+		var cookiesToRemove = new System.Collections.Generic.List<int>();
+		foreach (var pair in m_mapEventCallbacks)
+		{
+			if (pair.Value.m_Cookie == in_cookie)
+				cookiesToRemove.Add(pair.Key);
+		}
 
-    static public List<int> RemoveBankCallback(object in_cookie)
-    {
-        List<int> cookiesToRemove = new List<int>();
-        foreach (KeyValuePair<int, BankCallbackPackage> pair in m_mapBankCallbacks)
-        {
-            if (pair.Value.m_Cookie == in_cookie)
-            {
-                cookiesToRemove.Add(pair.Key);
-            }
-        }
+		var Count = cookiesToRemove.Count;
+		for (var ii = 0; ii < Count; ++ii)
+		{
+			var toRemove = cookiesToRemove[ii];
+			m_mapEventCallbacks.Remove(toRemove);
+			AkSoundEnginePINVOKE.CSharp_CancelEventCallbackCookie((System.IntPtr) toRemove);
+		}
+	}
 
-        foreach (int toRemove in cookiesToRemove)
-        {
-            m_mapBankCallbacks.Remove(toRemove);
-        }
+	public static void RemoveBankCallback(object in_cookie)
+	{
+		var cookiesToRemove = new System.Collections.Generic.List<int>();
+		foreach (var pair in m_mapBankCallbacks)
+		{
+			if (pair.Value.m_Cookie == in_cookie)
+				cookiesToRemove.Add(pair.Key);
+		}
 
-        return cookiesToRemove;
-    }
+		var Count = cookiesToRemove.Count;
+		for (var ii = 0; ii < Count; ++ii)
+		{
+			var toRemove = cookiesToRemove[ii];
+			m_mapBankCallbacks.Remove(toRemove);
+			AkSoundEnginePINVOKE.CSharp_CancelBankCallbackCookie((System.IntPtr) toRemove);
+		}
+	}
 
-    static public void SetLastAddedPlayingID(uint in_playingID)
-    {
-        if (m_LastAddedEventPackage != null)
-        {
-            if (m_LastAddedEventPackage.m_playingID == 0)
-            {
-                m_LastAddedEventPackage.m_playingID = in_playingID;
-            }
-        }
-    }
-    
-    static IntPtr m_pNotifMem;
-    static private MonitoringCallback m_MonitoringCB;
+	public static void SetLastAddedPlayingID(uint in_playingID)
+	{
+		if (m_LastAddedEventPackage != null && m_LastAddedEventPackage.m_playingID == 0)
+			m_LastAddedEventPackage.m_playingID = in_playingID;
+	}
 
-#if UNITY_IOS && ! UNITY_EDITOR
-    public delegate AKRESULT AudioInterruptionCallback(int in_bEnterInterruption, object in_Cookie);
-    // App implements its own callback.
-    private static AudioInterruptionCallbackPackage ms_interruptCallbackPkg = null;
+	private static System.IntPtr m_pNotifMem = System.IntPtr.Zero;
+	private static MonitoringCallback m_MonitoringCB;
 
-    [StructLayout(LayoutKind.Sequential)]
-    public struct AkAudioInterruptionInfo
-    {
-        public Int32 bEnterInterruption;
-    }
+#if UNITY_IOS && !UNITY_EDITOR
+	public delegate AKRESULT AudioInterruptionCallback(bool in_bEnterInterruption, object in_Cookie);
+	// App implements its own callback.
+	private static AudioInterruptionCallbackPackage ms_interruptCallbackPkg = null;
 
-    public class AudioInterruptionCallbackPackage
-    {
-        public AudioInterruptionCallbackPackage(AudioInterruptionCallback in_cb, object in_cookie)
-        {
-            m_Callback = in_cb;
-            m_Cookie = in_cookie;
-        }
-        public object m_Cookie;
-        public AudioInterruptionCallback m_Callback;
-    };
+	public class AudioInterruptionCallbackPackage
+	{
+		public object m_Cookie;
+		public AudioInterruptionCallback m_Callback;
+	}
 #endif // #if UNITY_IOS && ! UNITY_EDITOR
 
-    public delegate AKRESULT BGMCallback(int in_bOtherAudioPlaying, object in_Cookie);
-    // App implements its own callback.
-    private static BGMCallbackPackage ms_sourceChangeCallbackPkg = null;
+	public delegate AKRESULT BGMCallback(bool in_bOtherAudioPlaying, object in_Cookie);
 
-    [StructLayout(LayoutKind.Sequential)]
-    public struct AkBGMInfo
-    {
-        public Int32 bOtherAudioPlaying;
-    }
+	// App implements its own callback.
+	private static BGMCallbackPackage ms_sourceChangeCallbackPkg;
 
-    public class BGMCallbackPackage
-    {
-        public BGMCallbackPackage(BGMCallback in_cb, object in_cookie)
-        {
-            m_Callback = in_cb;
-            m_Cookie = in_cookie;
-        }
-        public object m_Cookie;
-        public BGMCallback m_Callback;
-    };
+	public class BGMCallbackPackage
+	{
+		public BGMCallback m_Callback;
+		public object m_Cookie;
+	}
 
+	public static AKRESULT Init(int BufferSize)
+	{
+		m_pNotifMem = BufferSize > 0 ? System.Runtime.InteropServices.Marshal.AllocHGlobal(BufferSize) : System.IntPtr.Zero;
 
-    static public AKRESULT Init()
-    {
-        //Allocate 4k for notifications that will happen during one game frame.
-        m_pNotifMem = Marshal.AllocHGlobal(4096);
-        return AkCallbackSerializer.Init(m_pNotifMem, 4096);
-    }
+#if UNITY_EDITOR
+		AkCallbackSerializer.SetLocalOutput((uint) AkMonitorErrorLevel.ErrorLevel_All);
+#endif
 
-    static public void Term()
-    {
-        AkCallbackSerializer.Term();
-        Marshal.FreeHGlobal(m_pNotifMem);
-        m_pNotifMem = IntPtr.Zero;
-    }
+		return AkCallbackSerializer.Init(m_pNotifMem, (uint) BufferSize);
+	}
+
+	public static void Term()
+	{
+		if (m_pNotifMem != System.IntPtr.Zero)
+		{
+			AkCallbackSerializer.Term();
+			System.Runtime.InteropServices.Marshal.FreeHGlobal(m_pNotifMem);
+			m_pNotifMem = System.IntPtr.Zero;
+		}
+	}
 
 	/// Call this to set a function to call whenever Wwise prints a message (warnings or errors).
-	/// By default this is called in AkInitializer.cs to print in the Unity console.
-    static public void SetMonitoringCallback(ErrorLevel in_Level, MonitoringCallback in_CB)
-    {
-        AkCallbackSerializer.SetLocalOutput((uint)in_Level);
-        m_MonitoringCB = in_CB;
-    }
+	public static void SetMonitoringCallback(AkMonitorErrorLevel in_Level, MonitoringCallback in_CB)
+	{
+		AkCallbackSerializer.SetLocalOutput(in_CB != null ? (uint) in_Level : 0);
+		m_MonitoringCB = in_CB;
+	}
 
-#if UNITY_IOS && ! UNITY_EDITOR
-    /// Call this to set a iOS callback interruption function.
-    /// By default this callback is not defined.
-    static public void SetInterruptionCallback(AudioInterruptionCallback in_CB, object in_cookie)
-    {
-        ms_interruptCallbackPkg = new AudioInterruptionCallbackPackage(in_CB, in_cookie);
-    }
+#if UNITY_IOS && !UNITY_EDITOR
+	/// Call this function to set a iOS callback interruption function. By default this callback is not defined.
+	static public void SetInterruptionCallback(AudioInterruptionCallback in_CB, object in_cookie)
+	{
+		ms_interruptCallbackPkg = new AudioInterruptionCallbackPackage { m_Callback = in_CB, m_Cookie = in_cookie };
+	}
 #endif // #if UNITY_IOS && ! UNITY_EDITOR
 
-    /// Call this to set a iOS callback interruption function.
-    /// By default this callback is not defined.
-    static public void SetBGMCallback(BGMCallback in_CB, object in_cookie)
-    {
-        ms_sourceChangeCallbackPkg = new BGMCallbackPackage(in_CB, in_cookie);
-    }
+	/// Call this to set a background music callback function. By default this callback is not defined.
+	public static void SetBGMCallback(BGMCallback in_CB, object in_cookie)
+	{
+		ms_sourceChangeCallbackPkg = new BGMCallbackPackage { m_Callback = in_CB, m_Cookie = in_cookie };
+	}
 
 	/// This function dispatches all the accumulated callbacks from the native sound engine. 
 	/// It must be called regularly.  By default this is called in AkInitializer.cs.
-    static public int PostCallbacks()
-    {
-        int numCallbacks = 0;
-        if (m_pNotifMem == IntPtr.Zero)
-            return numCallbacks;
-        
-        IntPtr pData = AkCallbackSerializer.Lock();
-        while (pData != IntPtr.Zero)
-        {
-            AkCommonCallback commonCB = new AkCommonCallback();
+	public static int PostCallbacks()
+	{
+		if (m_pNotifMem == System.IntPtr.Zero)
+			return 0;
 
-            commonCB.pPackage = (IntPtr)Marshal.ReadIntPtr(pData);
-            GotoEndOfCurrentStructMember_IntPtr(ref pData);
+		try
+		{
+			var numCallbacks = 0;
 
-            commonCB.pNext = (IntPtr)Marshal.ReadIntPtr(pData);
-            GotoEndOfCurrentStructMember_IntPtr(ref pData);
+			for (var pNext = AkCallbackSerializer.Lock();
+				pNext != System.IntPtr.Zero;
+				pNext = AkSoundEnginePINVOKE.CSharp_AkSerializedCallbackHeader_pNext_get(pNext), ++numCallbacks)
+			{
+				var pPackage = AkSoundEnginePINVOKE.CSharp_AkSerializedCallbackHeader_pPackage_get(pNext);
+				var eType = (AkCallbackType) AkSoundEnginePINVOKE.CSharp_AkSerializedCallbackHeader_eType_get(pNext);
+				var pData = AkSoundEnginePINVOKE.CSharp_AkSerializedCallbackHeader_GetData(pNext);
 
-            commonCB.eType = (AkCallbackType)Marshal.ReadInt32(pData);
-            GotoEndOfCurrentStructMember_EnumType<AkCallbackType>(ref pData);
-
-            EventCallbackPackage eventPkg = null;
-            BankCallbackPackage bankPkg = null;
-
-            if (!SafeExtractCallbackPackages(commonCB, out eventPkg, out bankPkg))
-            {
-                AkCallbackSerializer.Unlock();
-                return numCallbacks;
-            }
-
-            if (commonCB.eType == AkCallbackType.AK_Monitoring)
-            {
-                AkMonitoringMsg monitorMsg = new AkMonitoringMsg();
-
-                monitorMsg.errorCode = (ErrorCode)Marshal.ReadInt32(pData);
-                // WG-25449
-                GotoEndOfCurrentStructMember_ValueType<int>(ref pData);
-
-                monitorMsg.errorLevel = (ErrorLevel)Marshal.ReadInt32(pData);
-                // WG-25449
-                GotoEndOfCurrentStructMember_ValueType<int>(ref pData);
-
-                monitorMsg.playingID = (uint)Marshal.ReadInt32(pData);
-                GotoEndOfCurrentStructMember_ValueType<uint>(ref pData);
-
-                monitorMsg.gameObjID = (IntPtr)Marshal.ReadIntPtr(pData);
-                GotoEndOfCurrentStructMember_IntPtr(ref pData);
-
-                // C# implementation of the struct does not include the tail string member, so as we skip sizes, pData is now at the actual start of the string member.
-                monitorMsg.msg = SafeMarshalString(pData);
-                if (m_MonitoringCB != null)
-                {
-                    m_MonitoringCB(monitorMsg.errorCode, monitorMsg.errorLevel, monitorMsg.playingID, monitorMsg.gameObjID, monitorMsg.msg);
-                }
-            }
-            else if (commonCB.eType == AkCallbackType.AK_Bank)
-            {
-                AkBankInfo bankCB = new AkBankInfo();
-                
-                bankCB.bankID = (uint)Marshal.ReadInt32(pData);
-                GotoEndOfCurrentStructMember_ValueType<uint>(ref pData);
-                
-                bankCB.inMemoryBankPtr = Marshal.ReadIntPtr(pData);
-                GotoEndOfCurrentStructMember_ValueType<IntPtr>(ref pData);
-
-                bankCB.eLoadResult = (AKRESULT)Marshal.ReadInt32(pData);
-                GotoEndOfCurrentStructMember_EnumType<AKRESULT>(ref pData);
-
-                bankCB.memPoolId = (uint)Marshal.ReadInt32(pData);
-                GotoEndOfCurrentStructMember_ValueType<uint>(ref pData);
-
-                if ( bankPkg != null && bankPkg.m_Callback != null)
-                {
-                    bankPkg.m_Callback(bankCB.bankID, bankCB.inMemoryBankPtr, bankCB.eLoadResult, bankCB.memPoolId, bankPkg.m_Cookie);
-                }
-
-            }
-#if UNITY_IOS && ! UNITY_EDITOR
-            else if (commonCB.eType == AkCallbackType.AK_AudioInterruption)
-            {
-                AkAudioInterruptionInfo cbInfo = new AkAudioInterruptionInfo();
-                
-                cbInfo.bEnterInterruption = Marshal.ReadInt32(pData);
-                GotoEndOfCurrentStructMember_ValueType<Int32>(ref pData);
-
-                if (ms_interruptCallbackPkg != null && ms_interruptCallbackPkg.m_Callback != null)
-                {
-                    ms_interruptCallbackPkg.m_Callback(cbInfo.bEnterInterruption, ms_interruptCallbackPkg.m_Cookie);
-                }
-            }
-#endif // #if UNITY_IOS && ! UNITY_EDITOR
-            else if (commonCB.eType == AkCallbackType.AK_AudioSourceChange)
-            {
-                AkBGMInfo cbInfo = new AkBGMInfo();
-                
-                cbInfo.bOtherAudioPlaying = Marshal.ReadInt32(pData);
-                GotoEndOfCurrentStructMember_ValueType<Int32>(ref pData);
-
-                if (ms_sourceChangeCallbackPkg != null && ms_sourceChangeCallbackPkg.m_Callback != null)
-                {
-                    ms_sourceChangeCallbackPkg.m_Callback(cbInfo.bOtherAudioPlaying, ms_sourceChangeCallbackPkg.m_Cookie);
-                }
-            }
-            else
-            {
-                //Get the other parameters
-                switch (commonCB.eType)
-                {
-                    case AkCallbackType.AK_EndOfEvent:
-                    case AkCallbackType.AK_MusicPlayStarted:
-                        AkEventCallbackInfo eventCB = new AkEventCallbackInfo();
-
-                        eventCB.pCookie = Marshal.ReadIntPtr(pData);
-                        GotoEndOfCurrentStructMember_IntPtr(ref pData);
-
-                        eventCB.gameObjID = Marshal.ReadIntPtr(pData);
-                        GotoEndOfCurrentStructMember_IntPtr(ref pData);
-
-                        eventCB.playingID = (uint)Marshal.ReadInt32(pData);
-                        GotoEndOfCurrentStructMember_ValueType<uint>(ref pData);
-
-                        eventCB.eventID = (uint)Marshal.ReadInt32(pData);
-                        GotoEndOfCurrentStructMember_ValueType<uint>(ref pData);
-
-                        if (commonCB.eType != AkCallbackType.AK_EndOfEvent || eventPkg.m_bNotifyEndOfEvent)
-                            eventPkg.m_Callback(eventPkg.m_Cookie, commonCB.eType, eventCB);
-
-                        if (commonCB.eType == AkCallbackType.AK_EndOfEvent)
-                            m_mapEventCallbacks.Remove(eventPkg.GetHashCode());
-                        break;
-
-                    case AkCallbackType.AK_EndOfDynamicSequenceItem:
-                        AkDynamicSequenceItemCallbackInfo dynSeqInfoCB = new AkDynamicSequenceItemCallbackInfo();
-
-                        dynSeqInfoCB.pCookie = Marshal.ReadIntPtr(pData);
-                        GotoEndOfCurrentStructMember_IntPtr(ref pData);
-
-                        dynSeqInfoCB.playingID = (uint)Marshal.ReadInt32(pData);
-                        GotoEndOfCurrentStructMember_ValueType<uint>(ref pData);
-
-                        dynSeqInfoCB.audioNodeID = (uint)Marshal.ReadInt32(pData);
-                        GotoEndOfCurrentStructMember_ValueType<uint>(ref pData);
-
-                        dynSeqInfoCB.pCustomInfo = Marshal.ReadIntPtr(pData);
-                        GotoEndOfCurrentStructMember_IntPtr(ref pData);
-
-                        eventPkg.m_Callback(eventPkg.m_Cookie, commonCB.eType, dynSeqInfoCB);
-                        break;
-						
-					case AkCallbackType.AK_MIDIEvent:
-						AkMidiEventCallbackInfo midiEventInfo = new AkMidiEventCallbackInfo();
-						
-                        midiEventInfo.pCookie = Marshal.ReadIntPtr(pData);
-                        GotoEndOfCurrentStructMember_IntPtr(ref pData);
-
-                        midiEventInfo.gameObjID = Marshal.ReadIntPtr(pData);
-                        GotoEndOfCurrentStructMember_IntPtr(ref pData);
-
-                        midiEventInfo.playingID = (uint)Marshal.ReadInt32(pData);
-                        GotoEndOfCurrentStructMember_ValueType<uint>(ref pData);
-
-                        midiEventInfo.eventID = (uint)Marshal.ReadInt32(pData);
-                        GotoEndOfCurrentStructMember_ValueType<uint>(ref pData);
-						
-                        midiEventInfo.byType = (byte)Marshal.ReadByte(pData);
-                        GotoEndOfCurrentStructMember_ValueType<byte>(ref pData);
-						
-                        midiEventInfo.byChan = (byte)Marshal.ReadByte(pData);
-                        GotoEndOfCurrentStructMember_ValueType<byte>(ref pData);
-						
-						switch( midiEventInfo.byType )
+				switch (eType)
+				{
+					case AkCallbackType.AK_AudioInterruption:
+#if UNITY_IOS && !UNITY_EDITOR
+						if (ms_interruptCallbackPkg != null && ms_interruptCallbackPkg.m_Callback != null)
 						{
-							case AkSoundEngine.AK_MIDI_EVENT_TYPE_NOTE_OFF: //Deliberate fall-through
-							case AkSoundEngine.AK_MIDI_EVENT_TYPE_NOTE_ON:
-								midiEventInfo.byOnOffNote = (byte)Marshal.ReadByte(pData);
-								GotoEndOfCurrentStructMember_ValueType<byte>(ref pData);
-								midiEventInfo.byVelocity = (byte)Marshal.ReadByte(pData);
-								GotoEndOfCurrentStructMember_ValueType<byte>(ref pData);
-								break;
-								
-							case AkSoundEngine.AK_MIDI_EVENT_TYPE_NOTE_AFTERTOUCH:
-								midiEventInfo.byAftertouchNote = (byte)Marshal.ReadByte(pData);
-								GotoEndOfCurrentStructMember_ValueType<byte>(ref pData);
-								midiEventInfo.byNoteAftertouchValue = (byte)Marshal.ReadByte(pData);
-								GotoEndOfCurrentStructMember_ValueType<byte>(ref pData);
-								break;
-								
-							case AkSoundEngine.AK_MIDI_EVENT_TYPE_CONTROLLER:
-								// tCc
-								midiEventInfo.byCc = (byte)Marshal.ReadByte(pData);
-								GotoEndOfCurrentStructMember_ValueType<byte>(ref pData);
-								midiEventInfo.byCcValue = (byte)Marshal.ReadByte(pData);
-								GotoEndOfCurrentStructMember_ValueType<byte>(ref pData);
-								break;
-								
-							case AkSoundEngine.AK_MIDI_EVENT_TYPE_PROGRAM_CHANGE:
-								midiEventInfo.byProgramNum = (byte)Marshal.ReadByte(pData);
-								GotoEndOfCurrentStructMember_ValueType<byte>(ref pData);
-								GotoEndOfCurrentStructMember_ValueType<byte>(ref pData); // skip unused 2nd member
-								break;
-								
-							case AkSoundEngine.AK_MIDI_EVENT_TYPE_CHANNEL_AFTERTOUCH:
-								midiEventInfo.byChanAftertouchValue = (byte)Marshal.ReadByte(pData);
-								GotoEndOfCurrentStructMember_ValueType<byte>(ref pData);
-								GotoEndOfCurrentStructMember_ValueType<byte>(ref pData); // skip unused 2nd member
-								break;
-								
-							case AkSoundEngine.AK_MIDI_EVENT_TYPE_PITCH_BEND:
-								midiEventInfo.byValueLsb = (byte)Marshal.ReadByte(pData);
-								GotoEndOfCurrentStructMember_ValueType<byte>(ref pData);
-								midiEventInfo.byValueMsb = (byte)Marshal.ReadByte(pData);
-								GotoEndOfCurrentStructMember_ValueType<byte>(ref pData);
-								break;
-							
-							// mcooper quote: "You won't get these"
-							case AkSoundEngine.AK_MIDI_EVENT_TYPE_SYSEX:
-							case AkSoundEngine.AK_MIDI_EVENT_TYPE_ESCAPE:
-							case AkSoundEngine.AK_MIDI_EVENT_TYPE_META:
-							case AkSoundEngine.AK_MIDI_EVENT_TYPE_INVALID:
-							default:
-								// Do nothing except skip the next two members
-								GotoEndOfCurrentStructMember_ValueType<byte>(ref pData);
-								GotoEndOfCurrentStructMember_ValueType<byte>(ref pData);
-								break;
+							AkAudioInterruptionCallbackInfo.setCPtr(pData);
+							ms_interruptCallbackPkg.m_Callback(AkAudioInterruptionCallbackInfo.bEnterInterruption, ms_interruptCallbackPkg.m_Cookie);
 						}
-					
-                        eventPkg.m_Callback(eventPkg.m_Cookie, commonCB.eType, midiEventInfo);
+#endif // #if UNITY_IOS && ! UNITY_EDITOR
 						break;
-						
-                    case AkCallbackType.AK_Marker:
-                        AkMarkerCallbackInfo markerInfo = new AkMarkerCallbackInfo();
 
-                        markerInfo.pCookie = Marshal.ReadIntPtr(pData);
-                        GotoEndOfCurrentStructMember_IntPtr(ref pData);
+					case AkCallbackType.AK_AudioSourceChange:
+						if (ms_sourceChangeCallbackPkg != null && ms_sourceChangeCallbackPkg.m_Callback != null)
+						{
+							AkAudioSourceChangeCallbackInfo.setCPtr(pData);
+							ms_sourceChangeCallbackPkg.m_Callback(AkAudioSourceChangeCallbackInfo.bOtherAudioPlaying,
+								ms_sourceChangeCallbackPkg.m_Cookie);
+						}
+						break;
 
-                        markerInfo.gameObjID = Marshal.ReadIntPtr(pData);
-                        GotoEndOfCurrentStructMember_IntPtr(ref pData);
+					case AkCallbackType.AK_Monitoring:
+						if (m_MonitoringCB != null)
+						{
+							AkMonitoringCallbackInfo.setCPtr(pData);
+							m_MonitoringCB(AkMonitoringCallbackInfo.errorCode, AkMonitoringCallbackInfo.errorLevel,
+								AkMonitoringCallbackInfo.playingID, AkMonitoringCallbackInfo.gameObjID, AkMonitoringCallbackInfo.message);
+						}
+#if UNITY_EDITOR
+						else if (AkSoundEngineController.Instance.engineLogging)
+						{
+							AkMonitoringCallbackInfo.setCPtr(pData);
 
-                        markerInfo.playingID = (uint)Marshal.ReadInt32(pData);
-                        GotoEndOfCurrentStructMember_ValueType<uint>(ref pData);
+							var msg = "Wwise: " + AkMonitoringCallbackInfo.message;
+							if (AkMonitoringCallbackInfo.gameObjID != AkSoundEngine.AK_INVALID_GAME_OBJECT)
+							{
+								var obj =
+									UnityEditor.EditorUtility.InstanceIDToObject((int) AkMonitoringCallbackInfo.gameObjID) as
+										UnityEngine.GameObject;
+								if (obj != null)
+									msg += " (GameObject: " + obj + ")";
 
-                        markerInfo.eventID = (uint)Marshal.ReadInt32(pData);
-                        GotoEndOfCurrentStructMember_ValueType<uint>(ref pData);
+								msg += " (Instance ID: " + AkMonitoringCallbackInfo.gameObjID + ")";
+							}
 
-                        markerInfo.uIdentifier = (uint)Marshal.ReadInt32(pData);
-                        GotoEndOfCurrentStructMember_ValueType<uint>(ref pData);
-
-                        markerInfo.uPosition = (uint)Marshal.ReadInt32(pData);
-                        GotoEndOfCurrentStructMember_ValueType<uint>(ref pData);
-
-                        markerInfo.strLabel = SafeMarshalMarkerString(pData);
-
-                        eventPkg.m_Callback(eventPkg.m_Cookie, commonCB.eType, markerInfo);
-                        break;
-                        
-                    case AkCallbackType.AK_Duration:
-                        AkDurationCallbackInfo durInfoCB = new AkDurationCallbackInfo();
-
-                        durInfoCB.pCookie = Marshal.ReadIntPtr(pData);
-                        GotoEndOfCurrentStructMember_IntPtr(ref pData);
-
-                        durInfoCB.gameObjID = Marshal.ReadIntPtr(pData);
-                        GotoEndOfCurrentStructMember_IntPtr(ref pData);
-
-                        durInfoCB.playingID = (uint)Marshal.ReadInt32(pData);
-                        GotoEndOfCurrentStructMember_ValueType<uint>(ref pData);
-
-                        durInfoCB.eventID = (uint)Marshal.ReadInt32(pData);
-                        GotoEndOfCurrentStructMember_ValueType<uint>(ref pData);
-
-                        durInfoCB.fDuration = MarshalFloat32(pData);
-                        GotoEndOfCurrentStructMember_ValueType<float>(ref pData);
-
-                        durInfoCB.fEstimatedDuration = MarshalFloat32(pData);
-                        GotoEndOfCurrentStructMember_ValueType<float>(ref pData);
-
-                        durInfoCB.audioNodeID = (uint)Marshal.ReadInt32(pData);
-                        GotoEndOfCurrentStructMember_ValueType<uint>(ref pData);
-
-                        durInfoCB.mediaID = (uint)Marshal.ReadInt32(pData);
-                        GotoEndOfCurrentStructMember_ValueType<uint>(ref pData);
-
-                        durInfoCB.bStreaming = Convert.ToBoolean(Marshal.ReadInt32(pData));
-                        GotoEndOfCurrentStructMember_ValueType<uint>(ref pData);
-
-                        eventPkg.m_Callback(eventPkg.m_Cookie, commonCB.eType, durInfoCB);
-                        break;
-
-                    case AkCallbackType.AK_MusicSyncUserCue:
-                    case AkCallbackType.AK_MusicSyncBar:
-                    case AkCallbackType.AK_MusicSyncBeat:
-                    case AkCallbackType.AK_MusicSyncEntry:
-                    case AkCallbackType.AK_MusicSyncExit:
-                    case AkCallbackType.AK_MusicSyncGrid:
-                    case AkCallbackType.AK_MusicSyncPoint:
-                        AkMusicSyncCallbackInfo pInfo = new AkMusicSyncCallbackInfo();
-                        
-                        pInfo.pCookie = Marshal.ReadIntPtr(pData);
-                        GotoEndOfCurrentStructMember_IntPtr(ref pData);
-
-                        pInfo.gameObjID = Marshal.ReadIntPtr(pData);
-                        GotoEndOfCurrentStructMember_IntPtr(ref pData);
-
-                        pInfo.playingID = (uint)Marshal.ReadInt32(pData);
-                        GotoEndOfCurrentStructMember_ValueType<uint>(ref pData);
-
-						pInfo.segmentInfo.iCurrentPosition = Marshal.ReadInt32(pData);
-                        GotoEndOfCurrentStructMember_ValueType<int>(ref pData);
-						
-						pInfo.segmentInfo.iPreEntryDuration = Marshal.ReadInt32(pData);
-                        GotoEndOfCurrentStructMember_ValueType<int>(ref pData);
-						
-						pInfo.segmentInfo.iActiveDuration = Marshal.ReadInt32(pData);
-                        GotoEndOfCurrentStructMember_ValueType<int>(ref pData);
-						
-						pInfo.segmentInfo.iPostExitDuration = Marshal.ReadInt32(pData);
-                        GotoEndOfCurrentStructMember_ValueType<int>(ref pData);
-						
-						pInfo.segmentInfo.iRemainingLookAheadTime = Marshal.ReadInt32(pData);
-                        GotoEndOfCurrentStructMember_ValueType<int>(ref pData);
-						
-                        pInfo.segmentInfo.fBeatDuration = MarshalFloat32(pData);
-                        GotoEndOfCurrentStructMember_ValueType<float>(ref pData);
-
-                        pInfo.segmentInfo.fBarDuration = MarshalFloat32(pData);
-                        GotoEndOfCurrentStructMember_ValueType<float>(ref pData);
-
-                        pInfo.segmentInfo.fGridDuration = MarshalFloat32(pData);
-                        GotoEndOfCurrentStructMember_ValueType<float>(ref pData);
-
-                        pInfo.segmentInfo.fGridOffset = MarshalFloat32(pData);
-                        GotoEndOfCurrentStructMember_ValueType<float>(ref pData);
-
-						pInfo.musicSyncType = (AkCallbackType)Marshal.ReadInt32(pData);
-                        GotoEndOfCurrentStructMember_EnumType<AkCallbackType>(ref pData);
-						
-                        // WG-22334: User cues are always ANSI char*.
-                        pInfo.pszUserCueName = Marshal.PtrToStringAnsi(pData);
-
-                        eventPkg.m_Callback(eventPkg.m_Cookie, commonCB.eType, pInfo);
-                        break;
-                    default:
-                        string log = string.Format("WwiseUnity: PostCallbacks aborted due to error: Undefined callback type found. Callback object possibly corrupted.");
-                        Debug.LogError(log);
-                        AkCallbackSerializer.Unlock();
-                        return numCallbacks;
-                };
-
-            }
-
-            numCallbacks++;
-            pData = commonCB.pNext;
-
-            // Note: At the end of each callback case above, pData points to either end of the callback struct, or right before the tail string member of the struct. 
-
-        };
-
-        AkCallbackSerializer.Unlock();
-        return numCallbacks;
-    }
-
-    static private bool SafeExtractCallbackPackages(AkCommonCallback commonCB, out EventCallbackPackage eventPkg, out BankCallbackPackage bankPkg)
-    {
-        eventPkg = null;
-        bankPkg = null;
-
-        // Callbacks without packages are always valid.
-        if (commonCB.eType == AkCallbackType.AK_AudioInterruption || commonCB.eType == AkCallbackType.AK_AudioSourceChange ||
-            commonCB.eType == AkCallbackType.AK_Monitoring )
-        {
-            return true;
-        }
-
-        if (m_mapEventCallbacks.TryGetValue((int)commonCB.pPackage, out eventPkg))
-        {
-            return true;
-        }
-
-        if (m_mapBankCallbacks.TryGetValue((int)commonCB.pPackage, out bankPkg))
-        {
-            m_mapBankCallbacks.Remove((int)commonCB.pPackage);
-            return true;
-        }
-        
-        return false;
-    }
-    
-    static private string SafeMarshalString(IntPtr pData)
-    {
-        #if UNITY_EDITOR
-        #if !UNITY_WSA
-        if (Path.DirectorySeparatorChar == '/')
-            return Marshal.PtrToStringAnsi(pData);
-        else 
-            return Marshal.PtrToStringUni(pData);
-    #else
-        return Marshal.PtrToStringUni(pData);
-    #endif // #if !UNITY_WSA
-#elif UNITY_STANDALONE_WIN || UNITY_WSA || UNITY_XBOXONE
-    return Marshal.PtrToStringUni(pData);
-#else
-    return Marshal.PtrToStringAnsi(pData);
+							if (AkMonitoringCallbackInfo.errorLevel == AkMonitorErrorLevel.ErrorLevel_Error)
+								UnityEngine.Debug.LogError(msg);
+							else
+								UnityEngine.Debug.Log(msg);
+						}
 #endif
-    }
+						break;
 
-    // Temporary solution
-    static private string SafeMarshalMarkerString(IntPtr pData)
-    {
-        return Marshal.PtrToStringAnsi(pData);
-    }
+					case AkCallbackType.AK_Bank:
+						BankCallbackPackage bankPkg = null;
+						if (!m_mapBankCallbacks.TryGetValue((int) pPackage, out bankPkg))
+						{
+							UnityEngine.Debug.LogError("WwiseUnity: BankCallbackPackage not found for <" + pPackage + ">.");
+							return numCallbacks;
+						}
+						else
+						{
+							m_mapBankCallbacks.Remove((int) pPackage);
 
-    static private void GotoEndOfCurrentStructMember_ValueType<T>(ref IntPtr pData)
-    {
-        pData = (IntPtr)(pData.ToInt64() + Marshal.SizeOf(typeof(T)));
-    }
+							if (bankPkg != null && bankPkg.m_Callback != null)
+							{
+								AkBankCallbackInfo.setCPtr(pData);
+								bankPkg.m_Callback(AkBankCallbackInfo.bankID, AkBankCallbackInfo.inMemoryBankPtr, AkBankCallbackInfo.loadResult,
+									(uint) AkBankCallbackInfo.memPoolId, bankPkg.m_Cookie);
+							}
+						}
+						break;
 
-    static private void GotoEndOfCurrentStructMember_IntPtr(ref IntPtr pData)
-    {
-        pData = (IntPtr)(pData.ToInt64() + IntPtr.Size);
-    }
+					default:
+						EventCallbackPackage eventPkg = null;
+						if (!m_mapEventCallbacks.TryGetValue((int) pPackage, out eventPkg))
+						{
+							UnityEngine.Debug.LogError("WwiseUnity: EventCallbackPackage not found for <" + pPackage + ">.");
+							return numCallbacks;
+						}
+						else
+						{
+							AkCallbackInfo info = null;
 
-    static private void GotoEndOfCurrentStructMember_EnumType<T>(ref IntPtr pData)
-    {
-        pData = (IntPtr)(pData.ToInt64() + Marshal.SizeOf(Enum.GetUnderlyingType(typeof(T))));
-    }
+							switch (eType)
+							{
+								case AkCallbackType.AK_EndOfEvent:
+									m_mapEventCallbacks.Remove(eventPkg.GetHashCode());
+									if (eventPkg.m_bNotifyEndOfEvent)
+									{
+										AkEventCallbackInfo.setCPtr(pData);
+										info = AkEventCallbackInfo;
+									}
+									break;
 
-    // WG-21968
-    static byte[] floatMarshalBuffer = new byte[4];
-    static private float MarshalFloat32(IntPtr pData)
-    {
-        floatMarshalBuffer[0] = Marshal.ReadByte(pData, 0);
-        floatMarshalBuffer[1] = Marshal.ReadByte(pData, 1);
-        floatMarshalBuffer[2] = Marshal.ReadByte(pData, 2);
-        floatMarshalBuffer[3] = Marshal.ReadByte(pData, 3);
-        float value = System.BitConverter.ToSingle(floatMarshalBuffer, 0);
-        return value;
-    }
-};
-#endif // #if ! (UNITY_DASHBOARD_WIDGET || UNITY_WEBPLAYER || UNITY_WII || UNITY_NACL || UNITY_FLASH || UNITY_BLACKBERRY) // Disable under unsupported platforms.
+								case AkCallbackType.AK_MusicPlayStarted:
+									AkEventCallbackInfo.setCPtr(pData);
+									info = AkEventCallbackInfo;
+									break;
+
+								case AkCallbackType.AK_EndOfDynamicSequenceItem:
+									AkDynamicSequenceItemCallbackInfo.setCPtr(pData);
+									info = AkDynamicSequenceItemCallbackInfo;
+									break;
+
+								case AkCallbackType.AK_MIDIEvent:
+									AkMIDIEventCallbackInfo.setCPtr(pData);
+									info = AkMIDIEventCallbackInfo;
+									break;
+
+								case AkCallbackType.AK_Marker:
+									AkMarkerCallbackInfo.setCPtr(pData);
+									info = AkMarkerCallbackInfo;
+									break;
+
+								case AkCallbackType.AK_Duration:
+									AkDurationCallbackInfo.setCPtr(pData);
+									info = AkDurationCallbackInfo;
+									break;
+
+								case AkCallbackType.AK_MusicSyncUserCue:
+								case AkCallbackType.AK_MusicSyncBar:
+								case AkCallbackType.AK_MusicSyncBeat:
+								case AkCallbackType.AK_MusicSyncEntry:
+								case AkCallbackType.AK_MusicSyncExit:
+								case AkCallbackType.AK_MusicSyncGrid:
+								case AkCallbackType.AK_MusicSyncPoint:
+									AkMusicSyncCallbackInfo.setCPtr(pData);
+									info = AkMusicSyncCallbackInfo;
+									break;
+
+								case AkCallbackType.AK_MusicPlaylistSelect:
+									AkMusicPlaylistCallbackInfo.setCPtr(pData);
+									info = AkMusicPlaylistCallbackInfo;
+									break;
+
+								default:
+									UnityEngine.Debug.LogError("WwiseUnity: PostCallbacks aborted due to error: Undefined callback type <" +
+									                           eType + "> found. Callback object possibly corrupted.");
+									return numCallbacks;
+							}
+
+							if (info != null)
+								eventPkg.m_Callback(eventPkg.m_Cookie, eType, info);
+						}
+						break;
+				}
+			}
+
+			return numCallbacks;
+		}
+		finally
+		{
+			AkCallbackSerializer.Unlock();
+		}
+	}
+}
+#endif // #if ! (UNITY_DASHBOARD_WIDGET || UNITY_WEBPLAYER || UNITY_WII || UNITY_WIIU || UNITY_NACL || UNITY_FLASH || UNITY_BLACKBERRY) // Disable under unsupported platforms.

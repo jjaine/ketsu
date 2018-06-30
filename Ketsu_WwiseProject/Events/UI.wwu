@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{858FF141-AF43-46C3-90C4-9FC3A90FEFF3}" SchemaVersion="75">
+<WwiseDocument Type="WorkUnit" ID="{858FF141-AF43-46C3-90C4-9FC3A90FEFF3}" SchemaVersion="85">
 	<Events>
 		<WorkUnit Name="UI" ID="{858FF141-AF43-46C3-90C4-9FC3A90FEFF3}" PersistMode="Standalone">
 			<ChildrenList>
@@ -9,22 +9,26 @@
 					<ChildrenList>
 						<Event Name="UI_Spaceship_Idle" ID="{083DCFE5-C003-41DA-B80A-3145186802C2}">
 							<ChildrenList>
-								<Action Name="Set Voice Volume" ID="{D878C02F-5C54-44FA-BE52-4CA32413E188}" ShortID="443303191" Type="ChangeVolume" Scope="One" Global="false">
+								<Action Name="" ID="{D878C02F-5C54-44FA-BE52-4CA32413E188}" ShortID="443303191">
 									<PropertyList>
-										<Property Name="Absolute" Type="bool" Value="False"/>
+										<Property Name="AbsoluteOrRelative" Type="int16" Value="1"/>
+										<Property Name="ActionType" Type="int16" Value="12"/>
 									</PropertyList>
-									<ElementList>
-										<Element ID="{991CEEC7-6F75-475C-B85F-E3EE8EAB6F2B}" Global="false">
+									<ReferenceList>
+										<Reference Name="Target">
 											<ObjectRef Name="UI_Spacehip_Idle_01" ID="{4783B7BE-919E-4355-B43B-400E78469585}" WorkUnitID="{31E82EE3-46D8-44FD-B484-8AC77E38A15B}"/>
-										</Element>
-									</ElementList>
+										</Reference>
+									</ReferenceList>
 								</Action>
-								<Action Name="Play" ID="{E2A16FE8-CA18-4280-9F15-6C671CA7C5CA}" ShortID="327272580" Type="Play" Scope="One" Global="false">
-									<ElementList>
-										<Element ID="{4602345D-00C3-4671-9603-B5DE6EB67F05}" Global="false">
+								<Action Name="" ID="{E2A16FE8-CA18-4280-9F15-6C671CA7C5CA}" ShortID="327272580">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
 											<ObjectRef Name="UI_Spacehip_Idle_01" ID="{4783B7BE-919E-4355-B43B-400E78469585}" WorkUnitID="{31E82EE3-46D8-44FD-B484-8AC77E38A15B}"/>
-										</Element>
-									</ElementList>
+										</Reference>
+									</ReferenceList>
 								</Action>
 							</ChildrenList>
 						</Event>
